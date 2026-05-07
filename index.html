@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<title>Mein Claude Code Setup — Übersicht</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg: #0e0f12;
+    --bg-2: #15171c;
+    --bg-3: #1c1f26;
+    --line: #2a2e38;
+    --fg: #e8eaed;
+    --fg-dim: #9aa0aa;
+    --fg-mute: #6b7280;
+    --accent: #d4a05a;
+    --accent-2: #6ea8ff;
+    --green: #7bb978;
+    --red: #d97171;
+    --warn: #e0b95c;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Inter", "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font-family: var(--mono); font-size: 0.88em; background: var(--bg-3); padding: 1px 6px; border-radius: 4px; color: var(--accent); }
+  pre { font-family: var(--mono); font-size: 0.85em; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; overflow: auto; color: var(--fg); }
+  kbd { font-family: var(--mono); font-size: 0.85em; background: var(--bg-3); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 1px 6px; color: var(--fg); }
+
+  /* Layout */
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  nav.side {
+    position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto;
+    background: var(--bg-2); border-right: 1px solid var(--line); padding: 24px 18px;
+  }
+  nav.side h1 { font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg-dim); margin: 0 0 14px; font-weight: 600; }
+  nav.side .who { font-size: 12px; color: var(--fg-mute); margin-bottom: 18px; font-family: var(--mono); }
+  nav.side ol { list-style: none; padding: 0; margin: 0; counter-reset: navc; }
+  nav.side li { counter-increment: navc; }
+  nav.side a { display: block; padding: 7px 10px; border-radius: 6px; color: var(--fg-dim); font-size: 14px; }
+  nav.side a:before { content: counter(navc, decimal-leading-zero); color: var(--fg-mute); font-family: var(--mono); font-size: 11px; margin-right: 10px; }
+  nav.side a:hover { background: var(--bg-3); color: var(--fg); text-decoration: none; }
+  nav.side a.active { background: var(--bg-3); color: var(--accent); }
+
+  main { padding: 48px 56px 120px; max-width: 980px; }
+  section { padding: 44px 0; border-bottom: 1px dashed var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  section h2 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  section h2 .num { font-family: var(--mono); color: var(--fg-mute); font-size: 14px; margin-right: 14px; font-weight: 400; }
+  section .sub { color: var(--fg-dim); margin: 0 0 22px; font-size: 14px; }
+  section h3 { font-size: 17px; margin: 26px 0 10px; color: var(--fg); }
+  section h4 { font-size: 14px; margin: 18px 0 6px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+
+  .hero { padding: 56px 0 12px; border-bottom: 0; }
+  .hero .eyebrow { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .hero h1 { font-size: 44px; line-height: 1.1; margin: 0 0 14px; letter-spacing: -0.02em; }
+  .hero p.lead { font-size: 17px; color: var(--fg-dim); max-width: 720px; }
+
+  .grid { display: grid; gap: 14px; }
+  .grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .card { background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
+  .card .label { font-family: var(--mono); font-size: 11px; color: var(--fg-mute); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
+  .card .val { font-size: 14px; }
+  .card.click { cursor: pointer; transition: border-color 0.15s, transform 0.15s; }
+  .card.click:hover { border-color: var(--accent); }
+
+  details { background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; padding: 0; margin: 10px 0; }
+  details > summary { cursor: pointer; padding: 12px 16px; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::after { content: "+"; font-family: var(--mono); color: var(--fg-mute); font-size: 18px; }
+  details[open] > summary::after { content: "−"; }
+  details .body { padding: 0 16px 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+
+  .pill { display: inline-block; background: var(--bg-3); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; font-size: 12px; font-family: var(--mono); color: var(--fg-dim); margin: 2px 4px 2px 0; }
+  .pill.on { color: var(--green); border-color: rgba(123,185,120,0.3); }
+  .pill.off { color: var(--red); border-color: rgba(217,113,113,0.3); }
+  .pill.acc { color: var(--accent); border-color: rgba(212,160,90,0.3); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table th, table td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-mute); font-weight: 600; }
+  table tr:hover td { background: var(--bg-2); }
+
+  .tag { font-family: var(--mono); font-size: 11px; color: var(--accent); }
+  .muted { color: var(--fg-mute); }
+  .note { font-size: 13px; color: var(--fg-dim); border-left: 2px solid var(--accent); padding: 4px 0 4px 14px; margin: 14px 0; }
+
+  /* mini diagram */
+  .diagram { background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin: 14px 0; }
+  .diagram pre { background: transparent; border: 0; padding: 0; color: var(--fg-dim); font-size: 12.5px; line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    nav.side { position: static; height: auto; }
+    main { padding: 28px 22px 80px; }
+    .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <nav class="side">
+    <h1>Mein Claude Code</h1>
+    <div class="who">snapshot · 2026-05-07</div>
+    <ol>
+      <li><a href="#overview">Was ist das?</a></li>
+      <li><a href="#daily">Mein Daily-Driver-Set</a></li>
+      <li><a href="#flow">Wie es zusammenspielt</a></li>
+      <li><a href="#sound">Sound &amp; Status (das „Sprechen")</a></li>
+      <li><a href="#hooks">Hooks</a></li>
+      <li><a href="#mcp">MCP-Server</a></li>
+      <li><a href="#plugins">Plugins</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#commands">Slash-Commands</a></li>
+      <li><a href="#memory">Memory &amp; Obsidian</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#interrupt">Während-Konversation-Tricks</a></li>
+      <li><a href="#paths">Wichtige Pfade</a></li>
+      <li><a href="#terminal">Terminal — Ghostty</a></li>
+      <li><a href="#shell">Shell — Zsh</a></li>
+      <li><a href="#editor">Editor — Zed</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <header class="hero">
+      <div class="eyebrow">Persönliche Setup-Übersicht</div>
+      <h1>Was ich in Claude&nbsp;Code installiert habe — und wie es zusammenspielt.</h1>
+      <p class="lead">Eine klickbare Karte deiner Konfiguration: vom Ton der spielt wenn ich fertig bin, über die MCP-Server die Obsidian/HuggingFace/Resolve verbinden, bis zu den ~190 Skills und 22 aktiven Plugins.</p>
+    </header>
+
+    <!-- 01 Overview -->
+    <section id="overview">
+      <h2><span class="num">01</span>Was ist Claude Code?</h2>
+      <p class="sub">Ein Terminal-Tool von Anthropic. Du tippst, ich lese deine Files, ändere Code, führe Befehle aus. Was es zu *deinem* Setup macht, sind die Schichten drumherum.</p>
+
+      <div class="grid cols-3">
+        <div class="card"><div class="label">Modell</div><div class="val">Opus 4.7 (1M context)</div></div>
+        <div class="card"><div class="label">Effort</div><div class="val">xhigh</div></div>
+        <div class="card"><div class="label">Theme</div><div class="val">dark-daltonized</div></div>
+        <div class="card"><div class="label">Permissions</div><div class="val">dontAsk (mit Deny-Regeln)</div></div>
+        <div class="card"><div class="label">Plugins aktiv</div><div class="val">22</div></div>
+        <div class="card"><div class="label">Skills installiert</div><div class="val">~190 (16 in Nutzung)</div></div>
+      </div>
+    </section>
+
+    <!-- 01b Daily Drivers -->
+    <section id="daily">
+      <h2><span class="num">01b</span>Mein Daily-Driver-Set</h2>
+      <p class="sub">Was ich in den letzten ~60 Tagen tatsächlich genutzt habe — gezählt aus Session-Logs (<code>~/.claude/projects/*/​*.jsonl</code>). Der Rest schläft, schadet aber nicht.</p>
+
+      <h3>Top Skills (echte Nutzung)</h3>
+      <table>
+        <thead><tr><th style="width:60px">Calls</th><th>Skill</th><th>Wofür</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag">13×</span></td><td><code>superpowers:brainstorming</code></td><td>Strukturiertes Brainstormen vor Code</td></tr>
+          <tr><td><span class="tag">9×</span></td><td><code>superpowers:writing-plans</code></td><td>Implementierungs-Pläne schreiben</td></tr>
+          <tr><td><span class="tag">6×</span></td><td><code>superpowers:subagent-driven-development</code></td><td>Subagents parallel arbeiten lassen</td></tr>
+          <tr><td><span class="tag">4×</span></td><td><code>update-config</code></td><td>settings.json Änderungen, Hooks</td></tr>
+          <tr><td><span class="tag">3×</span></td><td><code>generate-image</code></td><td>Bilder via FLUX/Nano Banana</td></tr>
+          <tr><td><span class="tag">2×</span></td><td><code>superpowers:executing-plans</code></td><td>Pläne abarbeiten</td></tr>
+          <tr><td><span class="tag">2×</span></td><td><code>learn</code></td><td>Lern-Modus</td></tr>
+          <tr><td><span class="tag">1×</span></td><td><code>ios-simulator-skill</code></td><td>iOS-App-Testing</td></tr>
+          <tr><td><span class="tag">1×</span></td><td><code>frontend-design:frontend-design</code></td><td>Distinctive UIs ohne AI-Look</td></tr>
+          <tr><td><span class="tag">1×</span></td><td><code>frontend-slides</code></td><td>Web-Präsentationen</td></tr>
+          <tr><td><span class="tag">1×</span></td><td><code>pptx</code></td><td>PowerPoint</td></tr>
+          <tr><td><span class="tag">1×</span></td><td><code>loop</code></td><td>Wiederholt ausführen</td></tr>
+          <tr><td><span class="tag">1×</span></td><td><code>using-git-worktrees</code></td><td>Parallele Branches</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Plus stark genutzt (zählt als MCP-Tools, nicht Skills)</h3>
+      <p>
+        <span class="pill on">Playwright Browser-Automation</span>
+        <span class="pill on">Obsidian Vault</span>
+        <span class="pill on">Bash / Read / Edit / Write</span>
+      </p>
+
+      <h3 style="margin-top:30px">Skills die du hast aber vielleicht vergisst</h3>
+      <p class="sub">Ab jetzt schlage ich diese proaktiv vor wenn sie passen — kurz, einmal, dann weißt du sie wieder.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="label">Dokumente</div>
+          <div class="val"><code>pdf</code> · <code>docx</code> · <code>xlsx</code> · <code>markitdown</code> — File-Konvertierung &amp; Manipulation</div>
+        </div>
+        <div class="card">
+          <div class="label">Visual Assets</div>
+          <div class="val"><code>web-asset-generator</code> · <code>infographics</code> · <code>scientific-schematics</code> · <code>claude-d3js-skill</code></div>
+        </div>
+        <div class="card">
+          <div class="label">Web-Recherche</div>
+          <div class="val"><code>perplexity-search</code> · <code>parallel-web</code> · <code>research-lookup</code> · <code>citation-management</code></div>
+        </div>
+        <div class="card">
+          <div class="label">Denk-Modi</div>
+          <div class="val"><code>consciousness-council</code> · <code>what-if-oracle</code> · <code>scientific-critical-thinking</code></div>
+        </div>
+        <div class="card">
+          <div class="label">Diagramme &amp; Viz</div>
+          <div class="val"><code>markdown-mermaid-writing</code> · <code>matplotlib</code> · <code>plotly</code> · <code>seaborn</code></div>
+        </div>
+        <div class="card">
+          <div class="label">Claude Code Meta</div>
+          <div class="val"><code>keybindings-help</code> · <code>fewer-permission-prompts</code> · <code>simplify</code></div>
+        </div>
+      </div>
+
+      <p class="note">Hinterlegt in <code>~/.claude/CLAUDE.md</code> als „Proactive skill awareness"-Regel — ich surface die jetzt von selbst, einmal, mit kurzer Begründung. Wenn ich das übertreibe oder zu zurückhaltend bin: sag's, ich passe die Regel an.</p>
+    </section>
+
+    <!-- 02 Flow Diagram -->
+    <section id="flow">
+      <h2><span class="num">02</span>Wie alles zusammenspielt</h2>
+      <p class="sub">Eine Konversation läuft so durch dein System:</p>
+      <div class="diagram">
+<pre>
+   du tippst
+       │
+       ▼
+  ┌─────────────────────────┐
+  │ UserPromptSubmit-Hook   │ ──► caffeinate startet (Mac wach)
+  └────────────┬────────────┘
+               ▼
+  ┌─────────────────────────┐    liest
+  │ Claude (Opus 4.7)       │ ──────► CLAUDE.md (global+projekt)
+  │                         │ ──────► auto-memory/MEMORY.md
+  │                         │
+  │ wählt Werkzeug:         │
+  │  • Bash/Read/Edit/Write │
+  │  • Skill (~190 Skills)  │
+  │  • Agent (Subagent)     │
+  │  • MCP-Server           │ ──────► Obsidian, Resolve,
+  │  • Slash-Command        │         HuggingFace, Safari …
+  └────────────┬────────────┘
+               ▼
+  ┌─────────────────────────┐
+  │ Stop-Hook               │ ──► play-random-sound.sh
+  │                         │ ──► caffeinate stoppen
+  └─────────────────────────┘
+               ▼
+       Ton spielt → du weißt: fertig
+</pre>
+      </div>
+    </section>
+
+    <!-- 03 Sound & Status -->
+    <section id="sound">
+      <h2><span class="num">03</span>Sound &amp; Status — das was „spricht" mit dir</h2>
+      <p class="sub">Du hattest „mit dem Sprechen" erwähnt — das hier ist dein akustisches Feedback-System.</p>
+
+      <h3>Random-Sound bei Stop &amp; Notification</h3>
+      <p>Jedes Mal wenn ich fertig werde oder eine Notification feuert, läuft <code>play-random-sound.sh</code> und spielt einen zufälligen Sound aus <code>~/Sounds/claude/</code>.</p>
+      <pre>sounds=($HOME/Sounds/claude/*)
+sound="${sounds[$((RANDOM % ${#sounds[@]}))]}"
+afplay -v "$volume" "$sound" &amp;</pre>
+      <p class="muted">Die Lautstärke passt sich automatisch an: leiser (0.6) wenn Audio läuft, voll (1.0) sonst.</p>
+
+      <h3>Statuszeile unten</h3>
+      <p>Die Zeile am unteren Rand zeigt:</p>
+      <pre>user@host:/aktueller/pfad   [Opus 4.7 (1M context) | ctx: 73% left]</pre>
+      <p class="muted">Skript: <code>~/.claude/statusline-command.sh</code> — zeigt User, Hostname, CWD, Modell, verbleibender Kontext.</p>
+
+      <h3>Caffeinate-Loop</h3>
+      <p>Solange ich arbeite bleibt dein Mac wach. Beim Submit wird <code>caffeinate -dimsu</code> gestartet, beim Stop wieder gekillt. Tracked per Session-PID-File in <code>/tmp/claude-caffeinate-$SID.pid</code>.</p>
+
+      <h3>Push-Notifications</h3>
+      <p><code>agentPushNotifEnabled: true</code> — du bekommst Pushes vom Mobile-Begleiter.</p>
+    </section>
+
+    <!-- 04 Hooks -->
+    <section id="hooks">
+      <h2><span class="num">04</span>Hooks</h2>
+      <p class="sub">Shell-Befehle die automatisch bei Events feuern. Liegen in <code>~/.claude/settings.json</code>.</p>
+      <table>
+        <thead><tr><th>Event</th><th>Was passiert</th></tr></thead>
+        <tbody>
+          <tr><td><code>UserPromptSubmit</code></td><td>caffeinate startet, Mac bleibt wach</td></tr>
+          <tr><td><code>Stop</code></td><td>random sound + caffeinate stoppt</td></tr>
+          <tr><td><code>Notification</code></td><td>random sound</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Eigene Hooks bauen: Plugin <code>hookify</code> ist aktiv → <code>/hookify</code> baut dir einen aus deiner Konversation.</p>
+    </section>
+
+    <!-- 05 MCP -->
+    <section id="mcp">
+      <h2><span class="num">05</span>MCP-Server</h2>
+      <p class="sub">Externe Verbindungen. Jeder Server bringt ein Set von Tools mit, die ich aufrufen kann.</p>
+
+      <div class="grid cols-2">
+        <details><summary><strong>Obsidian</strong> <span class="pill on">aktiv</span></summary>
+          <div class="body">
+            <p>Vault: <code>vault</code>. Dein cross-session Knowledge-Layer (siehe Sektion 9).</p>
+            <p class="muted">Tools: read-note, edit-note, create-note, search-vault, add-tags, move-note, delete-note …</p>
+          </div>
+        </details>
+
+        <details><summary><strong>HuggingFace</strong> <span class="pill on">aktiv</span></summary>
+          <div class="body">
+            <p>Authentifiziert als <code>justjasper21</code>.</p>
+            <p class="muted">Tools: hf_doc_search, hub_repo_search, paper_search, space_search, gr1_qwen_image_generate_image …</p>
+          </div>
+        </details>
+
+        <details><summary><strong>DaVinci Resolve</strong> <span class="pill on">aktiv</span></summary>
+          <div class="body">
+            <p>Volle Kontrolle über DaVinci Resolve — Timeline-Editing, Color, Fusion, Render, alles per API.</p>
+            <p class="muted">Tools: ~50 inkl. timeline, render, clips, fusion, broll, voiceover, captions, color grading …</p>
+          </div>
+        </details>
+
+        <details><summary><strong>Safari Control</strong> <span class="pill on">aktiv</span></summary>
+          <div class="body">
+            <p>Nativer Safari-Browser steuern (statt Chromium). Gut für macOS-spezifische Workflows.</p>
+            <p class="muted">Tools: safari_navigate, safari_click, safari_screenshot, safari_exec_js, safari_tabs …</p>
+          </div>
+        </details>
+
+        <details><summary><strong>Playwright</strong> <span class="pill on">aktiv</span></summary>
+          <div class="body">
+            <p>Headless-Browser-Automation. Cross-Browser, Tests, Screenshots, Form-Fill.</p>
+            <p class="muted">Über Plugin <code>playwright</code> + Skill <code>playwright-skill</code>.</p>
+          </div>
+        </details>
+
+        <details><summary><strong>Context7</strong> <span class="pill on">aktiv</span></summary>
+          <div class="body">
+            <p>Aktuelle Library-Dokumentation. Für API-Syntax/Config jeglicher Frameworks (React, Next, Tailwind, Django …) — frischer als mein Training.</p>
+          </div>
+        </details>
+
+        <details><summary><strong>Google: Gmail / Calendar / Drive</strong> <span class="pill acc">verfügbar</span></summary>
+          <div class="body">
+            <p>OAuth-Flows verfügbar — werden bei Bedarf aktiviert.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 06 Plugins -->
+    <section id="plugins">
+      <h2><span class="num">06</span>Plugins (22 aktiv)</h2>
+      <p class="sub">Plugins bringen Sets von Skills, Commands, Agents und/oder MCP-Servern mit. Aus 16 Marketplaces installiert.</p>
+
+      <h3>Anthropic Official</h3>
+      <table>
+        <thead><tr><th>Plugin</th><th>Wofür</th></tr></thead>
+        <tbody>
+          <tr><td><code>superpowers</code></td><td>Erweiterte Fähigkeiten-Sammlung</td></tr>
+          <tr><td><code>context7</code></td><td>Live-Doku für Libraries (siehe MCP)</td></tr>
+          <tr><td><code>playwright</code></td><td>Browser-Automation</td></tr>
+          <tr><td><code>frontend-design</code></td><td>Distinctive UI-Code, kein generischer AI-Look</td></tr>
+          <tr><td><code>hookify</code></td><td>Hooks aus Konversationen generieren</td></tr>
+          <tr><td><code>plugin-dev</code></td><td>Eigene Plugins bauen</td></tr>
+          <tr><td><code>skill-creator</code></td><td>Eigene Skills bauen</td></tr>
+          <tr><td><code>mcp-server-dev</code></td><td>Eigene MCP-Server bauen</td></tr>
+          <tr><td><code>playground</code></td><td>Sandbox</td></tr>
+          <tr><td><code>vercel</code></td><td>Vercel-Deployments</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Workflow / Engineering</h3>
+      <table>
+        <tbody>
+          <tr><td><code>github-dev</code></td><td>PR-Workflows, Commits, Reviews, Comments</td></tr>
+          <tr><td><code>compound-engineering</code></td><td>Riesige Suite von Reviewern, Designern, Researchern, Workflow-Agents</td></tr>
+          <tr><td><code>sdd</code></td><td>Spec-Driven Development</td></tr>
+          <tr><td><code>sadd</code></td><td>Subagent-Driven Development (judge, do-in-parallel, tree-of-thoughts …)</td></tr>
+          <tr><td><code>tdd</code></td><td>Test-Driven Development</td></tr>
+          <tr><td><code>kaizen</code></td><td>Root-Cause / 5-Why / PDCA</td></tr>
+          <tr><td><code>reflexion</code></td><td>Selbstkritik, Reflexion, Memorize</td></tr>
+          <tr><td><code>docs</code></td><td>Doku schreiben &amp; updaten</td></tr>
+          <tr><td><code>fpf</code></td><td>First Principles Framework</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Spezialgebiet</h3>
+      <table>
+        <tbody>
+          <tr><td><code>static-analysis</code> (Trail of Bits)</td><td>Semgrep, CodeQL, SARIF</td></tr>
+          <tr><td><code>devops-skills</code></td><td>Dockerfile, K8s, Terraform, Ansible, Helm, Jenkins, GitHub Actions, GitLab CI …</td></tr>
+          <tr><td><code>learn</code> (agentsys)</td><td>Lern-Modus</td></tr>
+        </tbody>
+      </table>
+
+      <p class="note">Inaktiv (eingerichtet, ausgeschaltet): <code>claude-mem</code>, <code>fp-check</code>.</p>
+    </section>
+
+    <!-- 07 Skills -->
+    <section id="skills">
+      <h2><span class="num">07</span>Skills (~190)</h2>
+      <p class="sub">Skills sind Mini-Programme die ich per <code>/skill-name</code> oder automatisch aufrufe. Großteil aus dem K-Dense Scientific-Skills Marketplace.</p>
+
+      <details>
+        <summary><strong>Wissenschaft &amp; Datenbanken</strong> · ~100 Skills</summary>
+        <div class="body">
+          <p><strong>Bio/Genomik:</strong> alphafold, biopython, biorxiv, brenda, cellxgene-census, clinvar, cosmic, depmap, ena, ensembl, geo, gnomad, gtex, gwas, hmdb, interpro, jaspar, kegg, lamindb, monarch, openalex, opentargets, pdb, primekg, pubmed, reactome, scanpy, scvi-tools, scvelo, string, uniprot, anndata, …</p>
+          <p><strong>Chemie/Drugs:</strong> chembl, drugbank, datamol, deepchem, diffdock, medchem, molfeat, pubchem, pytdc, rdkit, rowan, torchdrug, zinc …</p>
+          <p><strong>Klinik/Medizin:</strong> clinical-decision-support, clinical-reports, clinicaltrials, clinpgx, dhdna-profiler, fda, iso-13485-certification, pyhealth, pydicom, treatment-plans …</p>
+          <p><strong>ML/Stats:</strong> scikit-learn, scikit-survival, statsmodels, statistical-analysis, shap, stable-baselines3, pytorch-lightning, transformers, torch-geometric, umap-learn …</p>
+          <p><strong>Visual:</strong> matplotlib, seaborn, plotly, scientific-visualization, scientific-schematics, claude-d3js-skill …</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>Forschung &amp; Schreiben</strong></summary>
+        <div class="body">
+          <p>citation-management, scientific-writing, scientific-brainstorming, scientific-critical-thinking, scientific-slides, latex-posters, pptx-posters, frontend-slides, peer-review, research-grants, research-lookup, perplexity-search, parallel-web, paper-2-web, literature-review, scholar-evaluation, hypothesis-generation, hypogenic, denario, markdown-mermaid-writing, markitdown …</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>Dokumente</strong></summary>
+        <div class="body">
+          <p><code>pdf</code>, <code>docx</code>, <code>xlsx</code>, <code>pptx</code>, <code>markitdown</code> — die „mach mir was aus diesem File"-Skills.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>Browser &amp; Web</strong></summary>
+        <div class="body">
+          <p>playwright-skill, web-asset-generator, generate-image, infographics, frontend-slides, pdf …</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>iOS &amp; Mobile</strong></summary>
+        <div class="body">
+          <p><code>ios-simulator-skill</code> — 21 Scripts für iOS-App-Testing, Builds, UI-Navigation.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>Engineering / Workflow</strong></summary>
+        <div class="body">
+          <p>Aus den Plugins: <code>review</code>, <code>security-review</code>, <code>simplify</code>, <code>init</code>, <code>fewer-permission-prompts</code>, <code>loop</code>, <code>schedule</code>, <code>update-config</code>, <code>keybindings-help</code> + alles aus compound-engineering / sdd / sadd / tdd / kaizen / reflexion / fpf.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>Andere</strong></summary>
+        <div class="body">
+          <p>consciousness-council, what-if-oracle, loki-mode, market-research-reports, hedgefundmonitor, alpha-vantage, edgartools, fred-economic-data, usfiscaldata, data-commons-client, fluidsim, sympy, qiskit, qutip, pennylane, cirq, networkx, geopandas, geomaster, astropy, matlab …</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- 08 Slash Commands -->
+    <section id="commands">
+      <h2><span class="num">08</span>Slash-Commands</h2>
+      <p class="sub">Alles was mit <code>/</code> startet.</p>
+
+      <h3>Eigene Commands</h3>
+      <table>
+        <thead><tr><th>Command</th><th>Wofür</th><th>Pfad</th></tr></thead>
+        <tbody>
+          <tr><td><code>/extra &lt;text&gt;</code></td><td>Hochpriorisierter Nachtrag zur laufenden Aufgabe</td><td><code>~/.claude/commands/extra.md</code></td></tr>
+        </tbody>
+      </table>
+      <p class="note">Neue eigene Commands: einfach <code>~/.claude/commands/&lt;name&gt;.md</code> anlegen mit Frontmatter <code>description</code>/<code>argument-hint</code> und <code>$ARGUMENTS</code>-Platzhalter im Body.</p>
+
+      <h3>Built-in Commands (Auswahl)</h3>
+      <table>
+        <tbody>
+          <tr><td><code>/init</code></td><td>CLAUDE.md für ein neues Projekt anlegen</td></tr>
+          <tr><td><code>/review</code></td><td>Code-Review</td></tr>
+          <tr><td><code>/security-review</code></td><td>Security-Audit</td></tr>
+          <tr><td><code>/simplify</code></td><td>Code vereinfachen</td></tr>
+          <tr><td><code>/loop &lt;intervall&gt; &lt;cmd&gt;</code></td><td>Etwas wiederholt ausführen</td></tr>
+          <tr><td><code>/schedule</code></td><td>Cron-artige Routinen für Remote-Agents</td></tr>
+          <tr><td><code>/update-config</code></td><td>settings.json Änderungen</td></tr>
+          <tr><td><code>/fewer-permission-prompts</code></td><td>Allowlist aus Transcripts ableiten</td></tr>
+          <tr><td><code>/keybindings-help</code></td><td>Tastatur-Shortcuts anpassen</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Plugin-Commands (Auswahl der wichtigsten)</h3>
+      <table>
+        <tbody>
+          <tr><td><code>/hookify</code></td><td>Hook aus Konversation bauen</td></tr>
+          <tr><td><code>/github-dev:create-pr</code> / <code>:review-pr</code> / <code>:resolve-pr-comments</code></td><td>GitHub-Workflows</td></tr>
+          <tr><td><code>/compound-engineering:ce-brainstorm</code> / <code>:ce-plan</code> / <code>:ce-review</code></td><td>Brainstorm / Plan / Review</td></tr>
+          <tr><td><code>/sdd:plan</code> / <code>:implement</code> / <code>:add-task</code></td><td>Spec-Driven Flow</td></tr>
+          <tr><td><code>/sadd:do-in-parallel</code> / <code>:tree-of-thoughts</code> / <code>:judge</code></td><td>Subagent-Patterns</td></tr>
+          <tr><td><code>/tdd:test-driven-development</code></td><td>TDD-Lauf</td></tr>
+          <tr><td><code>/kaizen:why</code> / <code>:root-cause-tracing</code></td><td>5-Why &amp; RCA</td></tr>
+          <tr><td><code>/reflexion:reflect</code> / <code>:critique</code></td><td>Selbstkritik</td></tr>
+          <tr><td><code>/fpf:propose-hypotheses</code></td><td>First-Principles-Hypothesen</td></tr>
+          <tr><td><code>/static-analysis:semgrep</code> / <code>:codeql</code></td><td>Static Analysis</td></tr>
+          <tr><td><code>/devops-skills:k8s-debug</code> / <code>:dockerfile-generator</code></td><td>DevOps</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 09 Memory & Obsidian -->
+    <section id="memory">
+      <h2><span class="num">09</span>Memory &amp; Obsidian</h2>
+      <p class="sub">Zwei Speicher-Schichten — wozu welche?</p>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="label">Auto-Memory · per Projekt</div>
+          <p><strong>Pfad:</strong> <code>~/.claude/projects/&lt;encoded-cwd&gt;/memory/</code> — der CWD-Pfad mit <code>/</code> durch <code>-</code> ersetzt</p>
+          <p><strong>Inhalt:</strong> Kurze, strukturierte Facts — wer du bist, Feedback-Regeln, Projekt-Pointer.</p>
+          <p><strong>Beispiele aktiv:</strong></p>
+          <ul class="muted">
+            <li>Branch-Hygiene (eigener Branch pro Spec)</li>
+            <li>Kein Claude-Co-Author in Commits</li>
+            <li>Pause Subagent-Autopilot vor echten Code-Änderungen</li>
+            <li>Projekt-spezifische Constraints (z.B. „nur Mobile, kein Web")</li>
+            <li>Multi-Terminal-Setup für parallele Spikes</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="label">Obsidian Vault · global</div>
+          <p><strong>Vault:</strong> <code>vault</code> (via MCP)</p>
+          <p><strong>Inhalt:</strong> Long-form Notes — Brainstorms, Decisions, Patterns, Project-State.</p>
+          <p><strong>Struktur:</strong></p>
+          <ul class="muted">
+            <li><code>Projects/&lt;Name&gt;.md</code></li>
+            <li><code>Brainstorms/YYYY-MM-DD — title.md</code></li>
+            <li><code>Decisions/YYYY-MM-DD — title.md</code></li>
+            <li><code>Patterns/&lt;name&gt;.md</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note">Du kannst dauerhafte Notizen mit <kbd>#</kbd> am Zeilenanfang in CLAUDE.md/Memory schreiben. Mit <code>/extra</code> kommt was nur in die laufende Konversation.</p>
+    </section>
+
+    <!-- 10 Permissions -->
+    <section id="permissions">
+      <h2><span class="num">10</span>Permissions</h2>
+      <p class="sub">Was darf ich autonom?</p>
+
+      <h4>Erlaubt (ohne Nachfragen)</h4>
+      <p>
+        <span class="pill on">Bash *</span>
+        <span class="pill on">Read *</span>
+        <span class="pill on">Write *</span>
+        <span class="pill on">Edit *</span>
+        <span class="pill on">Glob *</span>
+        <span class="pill on">Grep *</span>
+        <span class="pill on">Skill</span>
+        <span class="pill on">Agent</span>
+        <span class="pill on">WebSearch</span>
+        <span class="pill on">WebFetch</span>
+        <span class="pill on">NotebookEdit</span>
+        <span class="pill on">mcp__*</span>
+      </p>
+      <h4>Verboten</h4>
+      <p>
+        <span class="pill off">git push --force</span>
+        <span class="pill off">git push -f</span>
+      </p>
+      <h4>Modus</h4>
+      <p><span class="pill acc">defaultMode: dontAsk</span> <span class="pill acc">skipDangerousModePermissionPrompt</span></p>
+      <p class="note">Über <code>additionalDirectories</code> kann ein zweites Verzeichnis Settings teilen — praktisch wenn ein Projekt aus zwei Repos besteht.</p>
+    </section>
+
+    <!-- 11 Live tricks -->
+    <section id="interrupt">
+      <h2><span class="num">11</span>Während der Konversation eingreifen</h2>
+      <p class="sub">Die Frage von vorhin — hier zusammengefasst.</p>
+      <table>
+        <thead><tr><th>Was du willst</th><th>Wie</th><th>Effekt</th></tr></thead>
+        <tbody>
+          <tr><td>Info nachschieben, ohne stören</td><td>einfach tippen + Enter</td><td>Wird gequeued, ich sehe sie nach dem aktuellen Schritt</td></tr>
+          <tr><td>Hochpriorisierter Nachtrag</td><td><code>/extra &lt;text&gt;</code></td><td>Wird als WICHTIGER NACHTRAG markiert</td></tr>
+          <tr><td>Dauerhaft merken</td><td><kbd>#</kbd> am Zeilenanfang</td><td>In CLAUDE.md / Memory geschrieben</td></tr>
+          <tr><td>Sofort unterbrechen</td><td><kbd>Esc</kbd></td><td>Stoppt nur den laufenden Tool-Call. Kontext bleibt.</td></tr>
+          <tr><td>Zu früherem Punkt zurück</td><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>History — vom alten Punkt neu abzweigen</td></tr>
+          <tr><td>Parallele Session</td><td>2. Terminal, <code>claude</code></td><td>Eigener Strang, getrennter Kontext</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 12 Paths -->
+    <section id="paths">
+      <h2><span class="num">12</span>Wichtige Pfade</h2>
+      <table>
+        <tbody>
+          <tr><td><code>~/.claude/CLAUDE.md</code></td><td>Globale Instructions (Obsidian-Layer-Regeln)</td></tr>
+          <tr><td><code>~/.claude/settings.json</code></td><td>Permissions, Hooks, Plugins, Theme</td></tr>
+          <tr><td><code>~/.claude/commands/</code></td><td>Eigene Slash-Commands (aktuell: <code>extra.md</code>)</td></tr>
+          <tr><td><code>~/.claude/skills/</code></td><td>~190 lokale Skills</td></tr>
+          <tr><td><code>~/.claude/plugins/</code></td><td>Installierte Plugins + Marketplaces</td></tr>
+          <tr><td><code>~/.claude/projects/&lt;projekt&gt;/memory/</code></td><td>Auto-Memory (per Projekt)</td></tr>
+          <tr><td><code>~/.claude/play-random-sound.sh</code></td><td>Sound-Skript für Stop/Notification</td></tr>
+          <tr><td><code>~/.claude/statusline-command.sh</code></td><td>Statusbar unten</td></tr>
+          <tr><td><code>~/.claude/keybindings.json</code></td><td>Tastatur-Shortcuts</td></tr>
+          <tr><td><code>~/Sounds/claude/</code></td><td>Sound-Pool für Random-Sound</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 13 Terminal — Ghostty -->
+    <section id="terminal">
+      <h2><span class="num">13</span>Terminal — Ghostty</h2>
+      <p class="sub">GPU-beschleunigter Terminal. Default-Setup, einzige Anpassung: Apple-Terminal-„Pro"-Theme.</p>
+      <p>Konfig: <code>~/.config/ghostty/config</code></p>
+      <pre># Apple Terminal "Pro" Theme
+background = #000000
+foreground = #f2f2f2
+cursor-color = #4d4d4d
+selection-background = #414141
+
+palette = 0=#000000     palette = 8=#666666
+palette = 1=#990000     palette = 9=#e50000
+palette = 2=#00a600     palette = 10=#00d900
+palette = 3=#999900     palette = 11=#e5e500
+palette = 4=#0000b2     palette = 12=#0000ff
+palette = 5=#b200b2     palette = 13=#e500e5
+palette = 6=#00a6b2     palette = 14=#00e5e5
+palette = 7=#bfbfbf     palette = 15=#e5e5e5</pre>
+      <p class="note">Sonst kein Tweak — Default-Keybinds, Default-Schrift, GPU-Accel automatisch. Ghostty ist der Daily-Driver, hosted Claude Code via <code>claude</code> / <code>c</code> / <code>cc</code> / <code>cr</code>.</p>
+    </section>
+
+    <!-- 14 Shell — Zsh -->
+    <section id="shell">
+      <h2><span class="num">14</span>Shell — Zsh</h2>
+      <p class="sub">macOS-Default Zsh, kein oh-my-zsh. <code>.zprofile</code> setzt Brew + Resolve-Scripting; <code>.zshrc</code> hat conda, bun, Aliases.</p>
+
+      <h4>Aliases</h4>
+      <table>
+        <thead><tr><th>Alias</th><th>Expandiert zu</th></tr></thead>
+        <tbody>
+          <tr><td><code>c</code></td><td><code>claude</code></td></tr>
+          <tr><td><code>cc</code></td><td><code>claude --continue</code></td></tr>
+          <tr><td><code>cr</code></td><td><code>claude --resume</code></td></tr>
+          <tr><td><code>claude-mem</code></td><td>bun-Worker für claude-mem-Plugin (optional)</td></tr>
+        </tbody>
+      </table>
+
+      <h4>PATH-Reihenfolge</h4>
+      <p><code>$HOME/.local/bin</code> → <code>$BUN_INSTALL/bin</code> → conda (miniforge) → Brew (über <code>.zprofile</code>) → System.</p>
+
+      <h4>DaVinci Resolve Scripting (.zprofile)</h4>
+      <pre>export RESOLVE_SCRIPT_API="/Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/Scripting"
+export RESOLVE_SCRIPT_LIB="/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so"
+export PYTHONPATH="$PYTHONPATH:$RESOLVE_SCRIPT_API/Modules"</pre>
+      <p class="note">conda-init aus miniforge wird beim Shell-Start in <code>.zshrc</code> geladen, sonst aus dem Weg.</p>
+    </section>
+
+    <!-- 15 Editor — Zed -->
+    <section id="editor">
+      <h2><span class="num">15</span>Editor — Zed</h2>
+      <p class="sub">Pure-Black-Theme (custom override auf One Dark), SF Mono 14px, Telemetry aus, AI-Edit-Prediction aus.</p>
+      <table>
+        <tbody>
+          <tr><td>Theme</td><td>One Dark mit pure-black overrides — bg/gutter/panel/tab/title/toolbar/terminal alle <code>#000</code>, elevated surface <code>#0a0a0a</code></td></tr>
+          <tr><td>Buffer Font</td><td>SF Mono, 14px</td></tr>
+          <tr><td>UI Font</td><td>14px</td></tr>
+          <tr><td>CLI behavior</td><td><code>existing_window</code> — neue Files in vorhandenes Fenster statt neuem</td></tr>
+          <tr><td>Telemetry</td><td>diagnostics + metrics: <span class="pill red">off</span></td></tr>
+          <tr><td>Edit-Prediction</td><td><span class="pill red">off</span> — kein AI-Autocomplete in Zed (Claude Code macht das im Terminal)</td></tr>
+          <tr><td>Whitespace</td><td>nur in Selection sichtbar</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Cursor und VS Code sind installiert, aber Zed ist Default. Config: <code>~/.config/zed/settings.json</code>.</p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // active section in sidebar
+  const links = document.querySelectorAll('nav.side a[href^="#"]');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  function setActive() {
+    let current = sections[0];
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top < 120) current = s;
+    }
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current.id));
+  }
+  document.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+</script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Skill",
+      "Agent",
+      "WebSearch",
+      "WebFetch",
+      "NotebookEdit",
+      "mcp__*"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ],
+    "defaultMode": "dontAsk",
+    "additionalDirectories": []
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/flash-border-hide.sh"
+          },
+          {
+            "type": "command",
+            "command": "SID=$(jq -r .session_id); PIDFILE=\"/tmp/claude-caffeinate-$SID.pid\"; [ -f \"$PIDFILE\" ] && kill \"$(cat \"$PIDFILE\")\" 2>/dev/null; caffeinate -dimsu </dev/null >/dev/null 2>&1 & echo $! > \"$PIDFILE\"; touch \"/tmp/claude-running-$SID\""
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/hooks/topic-summarize.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/play-random-sound.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/flash-screen.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/flash-border-show.sh"
+          },
+          {
+            "type": "command",
+            "command": "SID=$(jq -r .session_id); PIDFILE=\"/tmp/claude-caffeinate-$SID.pid\"; [ -f \"$PIDFILE\" ] && kill \"$(cat \"$PIDFILE\")\" 2>/dev/null; rm -f \"$PIDFILE\" \"/tmp/claude-running-$SID\""
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/play-random-sound.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/flash-screen.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/flash-border-show.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/play-random-sound.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/flash-screen.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/flash-border-show.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/flash-border-hide.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "mcp-server-dev@claude-plugins-official": true,
+    "playground@claude-plugins-official": true,
+    "claude-mem@thedotmack": false,
+    "github-dev@claude-settings": true,
+    "compound-engineering@compound-engineering-plugin": true,
+    "sdd@context-engineering-kit": true,
+    "sadd@context-engineering-kit": true,
+    "tdd@context-engineering-kit": true,
+    "kaizen@context-engineering-kit": true,
+    "reflexion@context-engineering-kit": true,
+    "docs@context-engineering-kit": true,
+    "fpf@context-engineering-kit": true,
+    "static-analysis@trailofbits": true,
+    "fp-check@trailofbits": false,
+    "devops-skills@akin-ozer": true,
+    "learn@agentsys": true,
+    "vercel@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "expo-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "expo/skills"
+      }
+    },
+    "trailofbits": {
+      "source": {
+        "source": "github",
+        "repo": "trailofbits/skills"
+      }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    },
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "source": "github",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+      }
+    },
+    "claude-settings": {
+      "source": {
+        "source": "github",
+        "repo": "fcakyon/claude-codex-settings"
+      }
+    },
+    "taches-cc-resources": {
+      "source": {
+        "source": "github",
+        "repo": "glittercowboy/taches-cc-resources"
+      }
+    },
+    "compound-engineering-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "EveryInc/compound-engineering-plugin"
+      }
+    },
+    "context-engineering-kit": {
+      "source": {
+        "source": "github",
+        "repo": "NeoLabHQ/context-engineering-kit"
+      }
+    },
+    "akin-ozer": {
+      "source": {
+        "source": "github",
+        "repo": "akin-ozer/cc-devops-skills"
+      }
+    },
+    "fullstack-dev-skills": {
+      "source": {
+        "source": "github",
+        "repo": "jeffallan/claude-skills"
+      }
+    },
+    "web-asset-generator-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "alonw0/web-asset-generator"
+      }
+    },
+    "agentsys": {
+      "source": {
+        "source": "github",
+        "repo": "avifenesh/agentsys"
+      }
+    },
+    "everything-claude-code": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/everything-claude-code"
+      }
+    },
+    "claude-scientific-skills": {
+      "source": {
+        "source": "github",
+        "repo": "K-Dense-AI/claude-scientific-skills"
+      }
+    },
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code-plugins"
+      }
+    }
+  },
+  "theme": "dark-daltonized",
+  "effortLevel": "xhigh",
+  "skipDangerousModePermissionPrompt": true,
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": false,
+  "enableRemoteControl": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bash $HOME/.claude/statusline-command.sh"
+  }
+}

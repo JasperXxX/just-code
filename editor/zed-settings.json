@@ -1,0 +1,42 @@
+{
+  "cli_default_open_behavior": "existing_window",
+  "theme": {
+    "mode": "dark",
+    "dark": "One Dark",
+    "light": "One Light"
+  },
+  "experimental.theme_overrides": {
+    "background": "#000000",
+    "editor.background": "#000000",
+    "editor.gutter.background": "#000000",
+    "panel.background": "#000000",
+    "tab_bar.background": "#000000",
+    "tab.inactive_background": "#000000",
+    "tab.active_background": "#000000",
+    "title_bar.background": "#000000",
+    "status_bar.background": "#000000",
+    "toolbar.background": "#000000",
+    "terminal.background": "#000000",
+    "surface.background": "#000000",
+    "elevated_surface.background": "#0a0a0a",
+    "border": "#1a1a1a",
+    "border.variant": "#1a1a1a"
+  },
+  "buffer_font_family": "SF Mono",
+  "buffer_font_size": 14,
+  "ui_font_size": 14,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "features": {
+    "edit_prediction_provider": "none"
+  },
+  "show_whitespaces": "selection",
+  "tab_bar": {
+    "show": true
+  },
+  "scrollbar": {
+    "show": "auto"
+  }
+}
