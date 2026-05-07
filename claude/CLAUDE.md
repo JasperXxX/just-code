@@ -1,7 +1,7 @@
 # Global Claude Settings (template)
 
-> Generic version. Adapt the working-style index, Obsidian paths, project tags,
-> and skill list to your own setup. Personal observations belong in `~/.claude/working-style/`
+> Generic version. Adapt the working-style index, project tags, and skill list
+> to your own setup. Personal observations belong in `~/.claude/working-style/`
 > (not committed in this template repo).
 
 ## Working style — meta about how you work (read on-demand)
@@ -17,50 +17,34 @@ detail file when its topic comes up. Suggested files:
 
 Update rule: edit the detail file, not this index.
 
-## Obsidian as cross-session knowledge layer
+## Auto-memory: per-project structured facts
 
-Use an Obsidian vault as the long-form, cross-project knowledge layer that
-complements per-project auto-memory. Every Claude Code session, in every
-working directory, reads and writes here.
+Each working directory gets its own memory under
+`~/.claude/projects/<encoded-cwd>/memory/`. Short, structured facts —
+user profile, feedback rules, project pointers, reference links — live here.
 
-### Division of labor
-- **Auto-memory** (per-project, path-scoped): short structured facts — user profile, feedback rules, project pointers, reference links.
-- **Obsidian vault** (global, cross-project): long-form notes — brainstorm outputs, decision logs, project state, patterns. Persists across sessions and working directories.
+The directory has a flat layout: one `MEMORY.md` index plus one `.md` file
+per memory entry. Each entry has frontmatter (`name`, `description`, `type`)
+and a short body. The index `MEMORY.md` lists the entries, one line each,
+under ~150 chars. See `memory/` in this repo for sanitized templates.
 
-### Vault structure
-- `Projects/` — one note per active project. Living docs; update in place.
-- `Brainstorms/` — long-form thinking sessions, datestamped filename.
-- `Decisions/` — decision logs, datestamped filename.
-- `Patterns/` — approaches/solutions that worked. Reusable across projects.
-
-### When to read
-At the start of substantive work on a known topic, search the vault before answering. If a `Projects/<Name>.md` exists, read it.
+### Memory types
+- **user** — who the user is, role, expertise, preferences
+- **feedback** — corrections + validations on how to work; lead with the rule, then `**Why:**` and `**How to apply:**`
+- **project** — non-derivable facts about ongoing work; absolute dates only
+- **reference** — pointers to external systems (Linear, Slack, dashboards, repos)
 
 ### When to write
-After **substantive** work, persist what's worth remembering:
-- Brainstorm sessions of more than ~10 min → new note in `Brainstorms/`.
-- Real decisions (architecture, scope, direction) → new note in `Decisions/`.
-- Project state shifts → update `Projects/<Name>.md` via `read-note` then `edit-note`.
-- Patterns the user validated as good → new note in `Patterns/`.
+- Whenever the user explicitly says "remember", "save", "merk dir das".
+- After substantive work, when something non-obvious would help next session.
+- After corrections — save the rule + why.
+- After non-obvious validations — when the user confirmed an unusual approach worked.
 
-Don't write trivial chatter, code (lives in repos), or duplicate auto-memory entries verbatim.
-
-### Tagging convention (adapt to your projects)
-- Project: `project/<short-name>`
-- Status: `status/active`, `status/parked`, `status/done`
-- Type: `type/decision`, `type/brainstorm`, `type/project`, `type/pattern`
-
-### Frontmatter for notes you write
-```yaml
----
-tags: [project/<name>, status/active, type/project]
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
----
-```
-
-### Confirm before destructive ops
-`delete-note`, `move-note`, and full-content `replace` operations need user confirmation. `append` and `prepend` are safe.
+### When NOT to write
+- Code patterns, architecture, file paths — readable from the project.
+- Git history — `git log` / `git blame` are authoritative.
+- Anything already in CLAUDE.md.
+- Ephemeral task state — that's what TodoWrite is for.
 
 ## Proactive skill awareness
 

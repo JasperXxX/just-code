@@ -117,7 +117,7 @@
       <li><a href="#plugins">Plugins</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#commands">Slash-Commands</a></li>
-      <li><a href="#memory">Memory &amp; Obsidian</a></li>
+      <li><a href="#memory">Memory</a></li>
       <li><a href="#permissions">Permissions</a></li>
       <li><a href="#interrupt">Während-Konversation-Tricks</a></li>
       <li><a href="#paths">Wichtige Pfade</a></li>
@@ -132,7 +132,7 @@
     <header class="hero">
       <div class="eyebrow">Persönliche Setup-Übersicht</div>
       <h1>Was ich in Claude&nbsp;Code installiert habe — und wie es zusammenspielt.</h1>
-      <p class="lead">Eine klickbare Karte deiner Konfiguration: vom Ton der spielt wenn ich fertig bin, über die MCP-Server die Obsidian/HuggingFace/Resolve verbinden, bis zu den ~190 Skills und 22 aktiven Plugins.</p>
+      <p class="lead">Eine klickbare Karte deiner Konfiguration: vom Ton der spielt wenn ich fertig bin, über die MCP-Server die Resolve/HuggingFace/Safari verbinden, bis zu den ~190 Skills und 22 aktiven Plugins. Plus: Voice-Input via Spokenly, Window-Management, Editor.</p>
     </header>
 
     <!-- 01 Overview -->
@@ -178,7 +178,8 @@
       <h3>Plus stark genutzt (zählt als MCP-Tools, nicht Skills)</h3>
       <p>
         <span class="pill on">Playwright Browser-Automation</span>
-        <span class="pill on">Obsidian Vault</span>
+        <span class="pill on">Safari Control</span>
+        <span class="pill on">DaVinci Resolve</span>
         <span class="pill on">Bash / Read / Edit / Write</span>
       </p>
 
@@ -235,8 +236,8 @@
   │  • Bash/Read/Edit/Write │
   │  • Skill (~190 Skills)  │
   │  • Agent (Subagent)     │
-  │  • MCP-Server           │ ──────► Obsidian, Resolve,
-  │  • Slash-Command        │         HuggingFace, Safari …
+  │  • MCP-Server           │ ──────► Resolve, HuggingFace,
+  │  • Slash-Command        │         Safari, Playwright …
   └────────────┬────────────┘
                ▼
   ┌─────────────────────────┐
@@ -294,16 +295,9 @@ afplay -v "$volume" "$sound" &amp;</pre>
       <p class="sub">Externe Verbindungen. Jeder Server bringt ein Set von Tools mit, die ich aufrufen kann.</p>
 
       <div class="grid cols-2">
-        <details><summary><strong>Obsidian</strong> <span class="pill on">aktiv</span></summary>
-          <div class="body">
-            <p>Vault: <code>vault</code>. Dein cross-session Knowledge-Layer (siehe Sektion 9).</p>
-            <p class="muted">Tools: read-note, edit-note, create-note, search-vault, add-tags, move-note, delete-note …</p>
-          </div>
-        </details>
-
         <details><summary><strong>HuggingFace</strong> <span class="pill on">aktiv</span></summary>
           <div class="body">
-            <p>Authentifiziert als <code>justjasper21</code>.</p>
+            <p>Authentifiziert mit dem eigenen HuggingFace-Account.</p>
             <p class="muted">Tools: hf_doc_search, hub_repo_search, paper_search, space_search, gr1_qwen_image_generate_image …</p>
           </div>
         </details>
@@ -498,41 +492,40 @@ afplay -v "$volume" "$sound" &amp;</pre>
       </table>
     </section>
 
-    <!-- 09 Memory & Obsidian -->
+    <!-- 09 Memory -->
     <section id="memory">
-      <h2><span class="num">09</span>Memory &amp; Obsidian</h2>
-      <p class="sub">Zwei Speicher-Schichten — wozu welche?</p>
+      <h2><span class="num">09</span>Memory</h2>
+      <p class="sub">Zwei Layer — kurze Facts pro Projekt, plus cross-project Working-Style-Files.</p>
 
       <div class="grid cols-2">
         <div class="card">
           <div class="label">Auto-Memory · per Projekt</div>
           <p><strong>Pfad:</strong> <code>~/.claude/projects/&lt;encoded-cwd&gt;/memory/</code> — der CWD-Pfad mit <code>/</code> durch <code>-</code> ersetzt</p>
-          <p><strong>Inhalt:</strong> Kurze, strukturierte Facts — wer du bist, Feedback-Regeln, Projekt-Pointer.</p>
-          <p><strong>Beispiele aktiv:</strong></p>
+          <p><strong>Inhalt:</strong> Kurze, strukturierte Facts mit Frontmatter. Ein <code>MEMORY.md</code> als Index, plus eine <code>.md</code> pro Eintrag.</p>
+          <p><strong>Typen:</strong></p>
           <ul class="muted">
-            <li>Branch-Hygiene (eigener Branch pro Spec)</li>
-            <li>Kein Claude-Co-Author in Commits</li>
-            <li>Pause Subagent-Autopilot vor echten Code-Änderungen</li>
-            <li>Projekt-spezifische Constraints (z.B. „nur Mobile, kein Web")</li>
-            <li>Multi-Terminal-Setup für parallele Spikes</li>
+            <li><code>user</code> — wer du bist, Rolle, Präferenzen</li>
+            <li><code>feedback</code> — Korrekturen + Bestätigungen, mit <em>Why</em> + <em>How to apply</em></li>
+            <li><code>project</code> — Fakten zu laufender Arbeit, mit absoluten Daten</li>
+            <li><code>reference</code> — Pointer zu Linear, Slack, Dashboards, Repos</li>
           </ul>
         </div>
 
         <div class="card">
-          <div class="label">Obsidian Vault · global</div>
-          <p><strong>Vault:</strong> <code>vault</code> (via MCP)</p>
-          <p><strong>Inhalt:</strong> Long-form Notes — Brainstorms, Decisions, Patterns, Project-State.</p>
-          <p><strong>Struktur:</strong></p>
+          <div class="label">Working-Style-Files · global</div>
+          <p><strong>Pfad:</strong> <code>~/.claude/working-style/*.md</code> — indexiert in globaler <code>CLAUDE.md</code>, geladen on-demand</p>
+          <p><strong>Inhalt:</strong> Cross-project Patterns — wie du kommunizierst, welche Tools/Skills du nutzt, Feedback-Verlauf, wiederkehrende Workflows.</p>
+          <p><strong>Beispielfiles:</strong></p>
           <ul class="muted">
-            <li><code>Projects/&lt;Name&gt;.md</code></li>
-            <li><code>Brainstorms/YYYY-MM-DD — title.md</code></li>
-            <li><code>Decisions/YYYY-MM-DD — title.md</code></li>
-            <li><code>Patterns/&lt;name&gt;.md</code></li>
+            <li><code>prompt-style.md</code> — Sprachmix, Tonalität, Signale</li>
+            <li><code>tool-usage.md</code> — Skill/Tool-Nutzung, Friktion</li>
+            <li><code>feedback-log.md</code> — datierter Stream von „klappte/klappte nicht"</li>
+            <li><code>patterns.md</code> — wiederkehrende Workflows</li>
           </ul>
         </div>
       </div>
 
-      <p class="note">Du kannst dauerhafte Notizen mit <kbd>#</kbd> am Zeilenanfang in CLAUDE.md/Memory schreiben. Mit <code>/extra</code> kommt was nur in die laufende Konversation.</p>
+      <p class="note">Dauerhaft notieren mit <kbd>#</kbd> am Zeilenanfang → landet in CLAUDE.md oder Memory. <code>/extra</code> ist nur für die laufende Konversation. Sanitisierte Beispiele liegen unter <code>claude/memory/</code> im Repo.</p>
     </section>
 
     <!-- 10 Permissions -->
@@ -587,7 +580,7 @@ afplay -v "$volume" "$sound" &amp;</pre>
       <h2><span class="num">12</span>Wichtige Pfade</h2>
       <table>
         <tbody>
-          <tr><td><code>~/.claude/CLAUDE.md</code></td><td>Globale Instructions (Obsidian-Layer-Regeln)</td></tr>
+          <tr><td><code>~/.claude/CLAUDE.md</code></td><td>Globale Instructions (Workflow-Regeln, Memory-Layer)</td></tr>
           <tr><td><code>~/.claude/settings.json</code></td><td>Permissions, Hooks, Plugins, Theme</td></tr>
           <tr><td><code>~/.claude/commands/</code></td><td>Eigene Slash-Commands (aktuell: <code>extra.md</code>)</td></tr>
           <tr><td><code>~/.claude/skills/</code></td><td>~190 lokale Skills</td></tr>

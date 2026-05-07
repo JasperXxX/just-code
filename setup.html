@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Claude Code Loadout — Visual Setup</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg: #0e0f12;
+    --bg-2: #15171c;
+    --bg-3: #1c1f26;
+    --line: #2a2e38;
+    --fg: #e8eaed;
+    --fg-dim: #9aa0aa;
+    --fg-mute: #6b7280;
+    --accent: #d4a05a;
+    --accent-2: #6ea8ff;
+    --green: #7bb978;
+    --red: #d97171;
+    --warn: #e0b95c;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Inter", "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font-family: var(--mono); font-size: 0.88em; background: var(--bg-3); padding: 1px 6px; border-radius: 4px; color: var(--accent); }
+  pre { font-family: var(--mono); font-size: 0.85em; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; overflow: auto; color: var(--fg); margin: 0; }
+  kbd { font-family: var(--mono); font-size: 0.85em; background: var(--bg-3); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 1px 6px; color: var(--fg); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 56px 32px 120px; }
+
+  .hero { padding: 24px 0 48px; text-align: center; }
+  .hero .eyebrow { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 14px; }
+  .hero h1 { font-size: 52px; line-height: 1.05; margin: 0 0 12px; letter-spacing: -0.02em; font-weight: 700; }
+  .hero .crosslink { font-size: 13px; color: var(--fg-mute); font-family: var(--mono); margin-top: 18px; }
+
+  .panel-title { font-family: var(--mono); font-size: 11px; color: var(--fg-mute); letter-spacing: 0.18em; text-transform: uppercase; margin: 56px 0 18px; text-align: center; }
+  .panel-title:first-of-type { margin-top: 24px; }
+
+  /* Tool stack: icon grid */
+  .stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .tile {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 18px 18px;
+    text-align: center;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .tile:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .tile .icon {
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .tile .name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .tile .role { font-size: 11px; font-family: var(--mono); color: var(--fg-mute); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Workflow diagram with HTML, not just ASCII */
+  .flow {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 36px 28px;
+    overflow-x: auto;
+  }
+  .flow svg { display: block; margin: 0 auto; }
+  .flow .legend {
+    display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;
+    margin-top: 22px; font-size: 12px; font-family: var(--mono); color: var(--fg-mute);
+  }
+  .flow .legend span:before {
+    content: ""; display: inline-block; width: 10px; height: 10px;
+    border-radius: 2px; margin-right: 6px; vertical-align: middle;
+  }
+  .legend .l-input:before { background: #6ea8ff; }
+  .legend .l-core:before { background: #d4a05a; }
+  .legend .l-out:before { background: #7bb978; }
+  .legend .l-side:before { background: #6b7280; }
+
+  /* Install: vertical stepper */
+  .stepper {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px 32px;
+  }
+  .stepper ol { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+  .stepper li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 50px 200px 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .stepper li:last-child { border-bottom: 0; }
+  .stepper li::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    background: var(--bg-3);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    width: 38px; height: 38px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .stepper li .label { font-weight: 600; font-size: 14px; }
+  .stepper li .label .what { font-size: 11px; font-family: var(--mono); color: var(--fg-mute); display: block; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  .stepper li code { font-size: 12.5px; background: transparent; color: var(--fg-dim); padding: 0; }
+  .stepper li .cmd { background: var(--bg-3); padding: 8px 12px; border-radius: 6px; font-family: var(--mono); font-size: 12.5px; color: var(--fg); border: 1px solid var(--line); }
+
+  /* Configs as map */
+  .configs {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .configs .row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .configs .row:last-child { border-bottom: 0; }
+  .configs .src { color: var(--accent-2); }
+  .configs .arrow { color: var(--fg-mute); }
+  .configs .dst { color: var(--green); }
+
+  /* Cheatsheet */
+  .cheat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .cheat .group {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .cheat .group h3 {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  .cheat .group .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 13px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .cheat .group .row:last-child { border-bottom: 0; }
+  .cheat .group .row .desc { color: var(--fg-dim); flex: 1; padding-right: 10px; }
+  .cheat .group .row kbd { white-space: nowrap; }
+  .cheat .group .row code { font-size: 11.5px; }
+
+  @media (max-width: 900px) {
+    .stack { grid-template-columns: repeat(2, 1fr); }
+    .cheat { grid-template-columns: 1fr; }
+    .stepper li { grid-template-columns: 40px 1fr; }
+    .stepper li .cmd { grid-column: 1 / -1; }
+    .hero h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <header class="hero">
+    <div class="eyebrow">Visual Setup Guide</div>
+    <h1>Claude Code Loadout</h1>
+    <div class="crosslink">→ <a href="index.html">full configuration overview</a></div>
+  </header>
+
+  <!-- TOOL STACK -->
+  <div class="panel-title">The Stack</div>
+  <div class="stack">
+    <div class="tile">
+      <span class="icon">⚡</span>
+      <div class="name">Ghostty</div>
+      <div class="role">Terminal</div>
+    </div>
+    <div class="tile">
+      <span class="icon">◆</span>
+      <div class="name">Claude Code</div>
+      <div class="role">CLI Agent</div>
+    </div>
+    <div class="tile">
+      <span class="icon">▣</span>
+      <div class="name">Zed</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="tile">
+      <span class="icon">◉</span>
+      <div class="name">Spokenly</div>
+      <div class="role">Voice Input</div>
+    </div>
+    <div class="tile">
+      <span class="icon">▶</span>
+      <div class="name">Raycast</div>
+      <div class="role">Launcher</div>
+    </div>
+    <div class="tile">
+      <span class="icon">▭</span>
+      <div class="name">Rectangle</div>
+      <div class="role">Window Mgmt</div>
+    </div>
+    <div class="tile">
+      <span class="icon">◐</span>
+      <div class="name">Claude Desktop</div>
+      <div class="role">GUI Client</div>
+    </div>
+    <div class="tile">
+      <span class="icon">⚙</span>
+      <div class="name">LaunchAgents</div>
+      <div class="role">Background</div>
+    </div>
+  </div>
+
+  <!-- WORKFLOW -->
+  <div class="panel-title">Workflow</div>
+  <div class="flow">
+    <svg viewBox="0 0 980 540" width="100%" style="max-width: 980px;">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#9aa0aa"/>
+        </marker>
+        <marker id="arrowAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#d4a05a"/>
+        </marker>
+      </defs>
+
+      <style>
+        .node { fill: #15171c; stroke: #2a2e38; stroke-width: 1; }
+        .node-input { stroke: #6ea8ff; }
+        .node-core { stroke: #d4a05a; stroke-width: 1.5; }
+        .node-out { stroke: #7bb978; }
+        .node-side { stroke: #6b7280; }
+        .label-title { font-family: ui-monospace, "SF Mono", monospace; font-size: 11px; fill: #6b7280; letter-spacing: 0.1em; text-transform: uppercase; }
+        .label-name { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; fill: #e8eaed; font-weight: 600; }
+        .label-sub { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11px; fill: #9aa0aa; }
+        .edge { stroke: #9aa0aa; stroke-width: 1.5; fill: none; }
+        .edge-accent { stroke: #d4a05a; stroke-width: 1.8; fill: none; }
+        .edge-label { font-family: ui-monospace, "SF Mono", monospace; font-size: 10px; fill: #6b7280; }
+      </style>
+
+      <!-- Spokenly (input, top-left) -->
+      <rect class="node node-input" x="40" y="40" width="180" height="68" rx="8"/>
+      <text class="label-title" x="56" y="60">VOICE</text>
+      <text class="label-name" x="56" y="80">Spokenly</text>
+      <text class="label-sub" x="56" y="96">hold hotkey, speak</text>
+
+      <!-- Keyboard (input, bottom-left) -->
+      <rect class="node node-input" x="40" y="140" width="180" height="68" rx="8"/>
+      <text class="label-title" x="56" y="160">TYPE</text>
+      <text class="label-name" x="56" y="180">Keyboard</text>
+      <text class="label-sub" x="56" y="196">slash-commands, prompts</text>
+
+      <!-- Ghostty (terminal, center-left) -->
+      <rect class="node" x="290" y="90" width="180" height="68" rx="8"/>
+      <text class="label-title" x="306" y="110">TERMINAL</text>
+      <text class="label-name" x="306" y="130">Ghostty</text>
+      <text class="label-sub" x="306" y="146">$ c</text>
+
+      <!-- Claude Code (core) -->
+      <rect class="node node-core" x="540" y="200" width="220" height="140" rx="10"/>
+      <text class="label-title" x="558" y="222">CORE</text>
+      <text class="label-name" x="558" y="244">Claude Code</text>
+      <text class="label-sub" x="558" y="262">Opus 4.7 · 1M ctx</text>
+      <line x1="558" y1="276" x2="742" y2="276" stroke="#2a2e38" stroke-width="1"/>
+      <text class="label-sub" x="558" y="294">• Bash / Read / Edit / Write</text>
+      <text class="label-sub" x="558" y="310">• ~190 Skills</text>
+      <text class="label-sub" x="558" y="326">• Subagents · MCP · Hooks</text>
+
+      <!-- Memory (loaded, top-right) -->
+      <rect class="node node-side" x="800" y="40" width="160" height="84" rx="8"/>
+      <text class="label-title" x="816" y="60">CONTEXT</text>
+      <text class="label-name" x="816" y="80">Memory</text>
+      <text class="label-sub" x="816" y="96">CLAUDE.md</text>
+      <text class="label-sub" x="816" y="110">memory/*.md</text>
+
+      <!-- MCP (right side) -->
+      <rect class="node node-side" x="800" y="160" width="160" height="84" rx="8"/>
+      <text class="label-title" x="816" y="180">MCP</text>
+      <text class="label-name" x="816" y="200">External</text>
+      <text class="label-sub" x="816" y="216">Resolve · Safari</text>
+      <text class="label-sub" x="816" y="230">HuggingFace · Playwright</text>
+
+      <!-- Zed (output, bottom-center) -->
+      <rect class="node node-out" x="290" y="400" width="180" height="68" rx="8"/>
+      <text class="label-title" x="306" y="420">EDITOR</text>
+      <text class="label-name" x="306" y="440">Zed</text>
+      <text class="label-sub" x="306" y="456">reads modified files</text>
+
+      <!-- Hooks (output, right) -->
+      <rect class="node node-out" x="540" y="400" width="220" height="68" rx="8"/>
+      <text class="label-title" x="558" y="420">FEEDBACK</text>
+      <text class="label-name" x="558" y="440">Sound + Caffeinate</text>
+      <text class="label-sub" x="558" y="456">stop hook fires</text>
+
+      <!-- Edges: inputs to Ghostty -->
+      <path class="edge" d="M 220 74 C 250 74, 260 110, 290 116" marker-end="url(#arrow)"/>
+      <path class="edge" d="M 220 174 C 250 174, 260 138, 290 132" marker-end="url(#arrow)"/>
+
+      <!-- Ghostty to Claude Code -->
+      <path class="edge-accent" d="M 470 124 C 510 124, 510 240, 540 248" marker-end="url(#arrowAccent)"/>
+
+      <!-- Claude Code reads Memory -->
+      <path class="edge" d="M 760 220 C 790 200, 800 100, 800 82" marker-end="url(#arrow)"/>
+      <text class="edge-label" x="772" y="158">reads</text>
+
+      <!-- Claude Code uses MCP -->
+      <path class="edge" d="M 760 254 C 790 230, 800 210, 800 202" marker-end="url(#arrow)"/>
+      <text class="edge-label" x="772" y="240">calls</text>
+
+      <!-- Claude Code to Zed -->
+      <path class="edge-accent" d="M 600 340 C 540 380, 470 408, 410 430" marker-end="url(#arrowAccent)"/>
+      <text class="edge-label" x="470" y="386">edits files</text>
+
+      <!-- Claude Code to Hooks -->
+      <path class="edge-accent" d="M 650 340 C 650 370, 650 380, 650 400" marker-end="url(#arrowAccent)"/>
+      <text class="edge-label" x="660" y="376">on stop</text>
+
+      <!-- Loop back from Hooks to user -->
+      <path class="edge" d="M 760 434 C 920 434, 920 280, 760 280" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+      <text class="edge-label" x="900" y="370" transform="rotate(-90 900 370)">"done"</text>
+    </svg>
+    <div class="legend">
+      <span class="l-input">input</span>
+      <span class="l-core">core</span>
+      <span class="l-out">output</span>
+      <span class="l-side">context / external</span>
+    </div>
+  </div>
+
+  <!-- INSTALL -->
+  <div class="panel-title">Install</div>
+  <div class="stepper">
+    <ol>
+      <li>
+        <div class="label">Homebrew<span class="what">prereq</span></div>
+        <div class="cmd">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div>
+      </li>
+      <li>
+        <div class="label">Ghostty<span class="what">terminal</span></div>
+        <div class="cmd">brew install --cask ghostty</div>
+      </li>
+      <li>
+        <div class="label">Node + CLI tools<span class="what">runtime</span></div>
+        <div class="cmd">brew install node gh uv tmux</div>
+      </li>
+      <li>
+        <div class="label">Claude Code<span class="what">cli agent</span></div>
+        <div class="cmd">npm i -g @anthropic-ai/claude-code</div>
+      </li>
+      <li>
+        <div class="label">Zed<span class="what">editor</span></div>
+        <div class="cmd">brew install --cask zed</div>
+      </li>
+      <li>
+        <div class="label">Spokenly<span class="what">voice input</span></div>
+        <div class="cmd">Mac App Store → "Spokenly"</div>
+      </li>
+      <li>
+        <div class="label">Raycast + Rectangle<span class="what">launcher · windows</span></div>
+        <div class="cmd">brew install --cask raycast rectangle</div>
+      </li>
+      <li>
+        <div class="label">Claude Desktop<span class="what">optional gui</span></div>
+        <div class="cmd">brew install --cask claude</div>
+      </li>
+      <li>
+        <div class="label">Clone this repo<span class="what">configs</span></div>
+        <div class="cmd">git clone &lt;repo-url&gt; ~/claude-code-loadout</div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- CONFIGS -->
+  <div class="panel-title">Configs · copy from → to</div>
+  <div class="configs">
+    <div class="row">
+      <span class="src">claude/*</span>
+      <span class="arrow">→</span>
+      <span class="dst">~/.claude/</span>
+    </div>
+    <div class="row">
+      <span class="src">ghostty/config</span>
+      <span class="arrow">→</span>
+      <span class="dst">~/.config/ghostty/config</span>
+    </div>
+    <div class="row">
+      <span class="src">editor/zed-settings.json</span>
+      <span class="arrow">→</span>
+      <span class="dst">~/.config/zed/settings.json</span>
+    </div>
+    <div class="row">
+      <span class="src">shell/zshrc</span>
+      <span class="arrow">→</span>
+      <span class="dst">~/.zshrc</span>
+    </div>
+    <div class="row">
+      <span class="src">shell/zprofile</span>
+      <span class="arrow">→</span>
+      <span class="dst">~/.zprofile</span>
+    </div>
+    <div class="row">
+      <span class="src">launchagents/*.plist</span>
+      <span class="arrow">→</span>
+      <span class="dst">~/Library/LaunchAgents/</span>
+    </div>
+  </div>
+
+  <!-- CHEATSHEET -->
+  <div class="panel-title">Cheatsheet</div>
+  <div class="cheat">
+
+    <div class="group">
+      <h3>Shell aliases</h3>
+      <div class="row"><span class="desc">claude</span><code>c</code></div>
+      <div class="row"><span class="desc">claude --continue</span><code>cc</code></div>
+      <div class="row"><span class="desc">claude --resume</span><code>cr</code></div>
+    </div>
+
+    <div class="group">
+      <h3>In conversation</h3>
+      <div class="row"><span class="desc">queue follow-up</span><kbd>Enter</kbd></div>
+      <div class="row"><span class="desc">priority addendum</span><code>/extra</code></div>
+      <div class="row"><span class="desc">remember</span><kbd>#</kbd> line</div>
+      <div class="row"><span class="desc">interrupt</span><kbd>Esc</kbd></div>
+      <div class="row"><span class="desc">rewind history</span><kbd>Esc</kbd> <kbd>Esc</kbd></div>
+    </div>
+
+    <div class="group">
+      <h3>Window management</h3>
+      <div class="row"><span class="desc">left half</span><kbd>⌘</kbd><kbd>⌥</kbd><kbd>←</kbd></div>
+      <div class="row"><span class="desc">right half</span><kbd>⌘</kbd><kbd>⌥</kbd><kbd>→</kbd></div>
+      <div class="row"><span class="desc">maximize</span><kbd>⌘</kbd><kbd>⌥</kbd><kbd>↵</kbd></div>
+      <div class="row"><span class="desc">launcher</span><kbd>⌘</kbd><kbd>Space</kbd></div>
+    </div>
+
+    <div class="group">
+      <h3>Voice (Spokenly)</h3>
+      <div class="row"><span class="desc">dictate</span>hold hotkey</div>
+      <div class="row"><span class="desc">cancel</span>release + <kbd>Esc</kbd></div>
+      <div class="row"><span class="desc">model</span>Whisper Large v3</div>
+    </div>
+
+    <div class="group">
+      <h3>Hooks fire on</h3>
+      <div class="row"><span class="desc">submit</span><code>caffeinate</code></div>
+      <div class="row"><span class="desc">stop</span>random sound</div>
+      <div class="row"><span class="desc">notification</span>random sound</div>
+    </div>
+
+    <div class="group">
+      <h3>Memory paths</h3>
+      <div class="row"><span class="desc">global</span><code>~/.claude/CLAUDE.md</code></div>
+      <div class="row"><span class="desc">per-project</span><code>memory/</code></div>
+      <div class="row"><span class="desc">working-style</span><code>working-style/</code></div>
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>

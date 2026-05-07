@@ -38,7 +38,7 @@ printf '%s' "$placeholder" > "$topic_file"
   # (macOS has no `timeout` binary; this is portable bash.)
   tmp_out=$(mktemp -t claude-topic.XXXXXX)
   CLAUDE_TOPIC_HOOK_NESTED=1 claude -p --model claude-haiku-4-5-20251001 \
-    "Generate a SHORT thematic title (3-5 words) for what the user is working on, like a tab title. Examples: 'Statusline Bug fixen', 'Mobile App Backend Refactor', 'DaVinci Resolve Edit', 'Obsidian Problem suchen'. Use the same language as the request. No punctuation, no quotes, no explanation — just the title. Request: $prompt_clean" \
+    "Generate a SHORT thematic title (3-5 words) for what the user is working on, like a tab title. Examples: 'Statusline Bug Fix', 'Mobile App Refactor', 'Database Migration', 'Onboarding Doc Update'. Use the same language as the request. No punctuation, no quotes, no explanation — just the title. Request: $prompt_clean" \
     < /dev/null > "$tmp_out" 2>/dev/null &
   claude_pid=$!
 
