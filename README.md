@@ -2,6 +2,14 @@
 
 My Claude Code setup as a loadout — to look at, copy from, or get inspired by. Sanitized snapshot — no private data, no project names.
 
+## Start Claude Code
+
+```bash
+claude --dangerously-skip-permissions
+```
+
+Skips every permission prompt for the session. Convenient, but you're trusting Claude with full tool access — only run it in a project where you're fine with that.
+
 > Want the visual setup guide? Open **`setup.html`** in a browser. For the full configuration overview, **`index.html`**.
 
 ## What is this?
