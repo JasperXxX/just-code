@@ -54,7 +54,7 @@ Was du **nicht** hier findest:
 - persönliche Working-Style-Files (`prompt-style.md`, `tool-usage.md`, `feedback-log.md`, `patterns.md`)
 - konkrete Projektnamen
 - Nutzernamen / E-Mails / GitHub-Handles
-- Sound-Pool (`~/poducer/`) — durch generischen `~/Sounds/claude/` ersetzt
+- der konkrete Sound-Pool-Pfad — durch generischen `~/Sounds/claude/` ersetzt
 - Per-Projekt-Auto-Memories
 - Transcripts, Caches, Sessions
 
