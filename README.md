@@ -1,5 +1,9 @@
 # claude-code-loadout
 
+<p align="center">
+  <img src="assets/hero.svg" alt="Claude Code loadout — visual stack overview" width="100%">
+</p>
+
 My Claude Code setup as a loadout — to look at, copy from, or get inspired by. Sanitized snapshot — no private data, no project names.
 
 ## Start Claude Code
