@@ -54,7 +54,7 @@ Claude Code installs ship with hundreds of skills. Most go unused.
 
 How to apply:
 - If the task fits a skill in your *active set*, just use it silently.
-- If the task fits a skill they have but **don't normally use**, surface it briefly: one sentence — "Du hast übrigens den `<skill>`-Skill — soll ich den nehmen?". Then wait or proceed based on the cue.
+- If the task fits a skill they have but **don't normally use**, surface it briefly: one sentence — "By the way, you have the `<skill>` skill — want me to use it?". Then wait or proceed based on the cue.
 - If no skill fits, don't pretend one exists.
 - Don't surface every match — pick the *one* most likely to surprise+help.
 

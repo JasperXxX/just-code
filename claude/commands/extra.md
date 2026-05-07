@@ -1,19 +1,19 @@
 ---
-description: Wirf zusätzliche Info / einen Nachtrag in die laufende Konversation
-argument-hint: <der Nachtrag>
+description: Drop additional info / an addendum into the running conversation
+argument-hint: <the addendum>
 ---
 
-# WICHTIGER NACHTRAG vom User
+# IMPORTANT ADDENDUM from the user
 
-Der User hat während deiner laufenden Arbeit zusätzliche Information eingeworfen. Behandle sie als hochpriorisierten Nachtrag zur aktuellen Aufgabe — nicht als neue Aufgabe.
+The user has injected additional information while you were working. Treat it as a high-priority addendum to the current task — not as a new task.
 
-**Nachtrag:**
+**Addendum:**
 $ARGUMENTS
 
-**So gehst du damit um:**
-1. Bestätige kurz (1 Satz), dass du den Nachtrag verstanden hast und wie er deine Vorgehensweise verändert.
-2. Falls der Nachtrag etwas widerspricht, was du gerade tust oder geplant hast: passe den Plan an, bevor du weitermachst.
-3. Falls er nur ergänzt: integriere ihn und mach mit der laufenden Aufgabe weiter.
-4. Falls Mehrdeutigkeit besteht: eine kurze Rückfrage statt zu raten.
+**How to handle it:**
+1. Briefly confirm (one sentence) that you understood the addendum and how it changes your approach.
+2. If the addendum contradicts something you're doing or planning: adjust the plan before continuing.
+3. If it just adds to the existing context: integrate it and continue with the running task.
+4. If there's ambiguity: a short follow-up question instead of guessing.
 
-Setze die ursprüngliche Aufgabe danach fort — nicht von vorn, sondern an der Stelle wo du warst, mit dem Nachtrag berücksichtigt.
+Resume the original task afterwards — not from the start, but from where you were, with the addendum incorporated.
