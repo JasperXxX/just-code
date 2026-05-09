@@ -1,0 +1,41 @@
+{
+  "name": "remotion-lab",
+  "version": "0.2.0",
+  "description": "Remotion workspace — studies, templates, pipelines + production projects (Eurogang vlog, F1 edits, etc.)",
+  "private": true,
+  "scripts": {
+    "studio": "npx remotion studio src/index.ts",
+    "start": "npx remotion studio src/index.ts",
+    "render": "npx remotion render src/index.ts",
+    "render:hello": "npx remotion render src/index.ts HelloWorld outputs/v0/hello.mp4",
+    "test:render": "npx remotion render src/index.ts HelloWorld outputs/smoke.mp4 --concurrency=4"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "@react-three/fiber": "^9.6.1",
+    "@remotion/cli": "^4.0.457",
+    "@remotion/google-fonts": "^4.0.457",
+    "@remotion/layout-utils": "^4.0.457",
+    "@remotion/lottie": "^4.0.457",
+    "@remotion/media-utils": "^4.0.457",
+    "@remotion/motion-blur": "^4.0.457",
+    "@remotion/noise": "^4.0.457",
+    "@remotion/paths": "^4.0.457",
+    "@remotion/player": "^4.0.457",
+    "@remotion/shapes": "^4.0.457",
+    "@remotion/three": "^4.0.457",
+    "@remotion/transitions": "^4.0.457",
+    "@types/three": "^0.184.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "remotion": "^4.0.457",
+    "three": "^0.184.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.3"
+  }
+}
