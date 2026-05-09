@@ -1,0 +1,2369 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-07",
+  "total_sounds": 142,
+  "total_duration_ms": 581912.8,
+  "categories": {
+    "shutter": {
+      "count": 12,
+      "total_duration_ms": 7729.3,
+      "sounds": [
+        {
+          "file": "shutter/shutter-dslr-01.wav",
+          "duration_ms": 466.6,
+          "peak_db": -3.1,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "shutter-sound-dslr",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 shutter-sound-dslr.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-camera-flash-02.wav",
+          "duration_ms": 777.5,
+          "peak_db": -3.7,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "camera-flash-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 camera-flash-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-camera-03.wav",
+          "duration_ms": 397.2,
+          "peak_db": -5.3,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "camera-shutter-sound",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 camera-shutter-sound.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-camera-04.wav",
+          "duration_ms": 377.0,
+          "peak_db": -2.6,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "camera-shutter-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 camera-shutter-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-old-style-photo-camera-05.wav",
+          "duration_ms": 1444.0,
+          "peak_db": -3.5,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "old-style-photo-camera",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 old-style-photo-camera.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-camera-06.wav",
+          "duration_ms": 703.2,
+          "peak_db": -3.0,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "camera-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 camera-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-camera-snap-07.wav",
+          "duration_ms": 371.1,
+          "peak_db": -3.2,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "camera-snap-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 camera-snap-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-photo-08.wav",
+          "duration_ms": 380.2,
+          "peak_db": -3.0,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "photo-shutter-sound",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 photo-shutter-sound.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-snapshot-09.wav",
+          "duration_ms": 275.3,
+          "peak_db": -4.5,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "snapshot-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 snapshot-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-camera-10.wav",
+          "duration_ms": 248.2,
+          "peak_db": -3.9,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "camera-sound",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 camera-sound.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-classic-old-camera-flash-11.wav",
+          "duration_ms": 1128.1,
+          "peak_db": -3.0,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "classic-old-camera-flash",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 classic-old-camera-flash.mp3 (from existing collection)."
+        },
+        {
+          "file": "shutter/shutter-photo-flash-12.wav",
+          "duration_ms": 1160.9,
+          "peak_db": -3.2,
+          "tags": [
+            "camera",
+            "photo",
+            "transient",
+            "snap",
+            "shutter"
+          ],
+          "source": "davinci-flow",
+          "source_id": "photo-flash-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Shutter \u2014 photo-flash-sound-effect.mp3 (from existing collection)."
+        }
+      ]
+    },
+    "whoosh": {
+      "count": 22,
+      "total_duration_ms": 65766.6,
+      "sounds": [
+        {
+          "file": "whoosh/whoosh-fast-swoosh-01-01.wav",
+          "duration_ms": 3561.0,
+          "peak_db": -3.9,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "fast_swoosh_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 fast_swoosh_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-transition-swoosh-01-02.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -5.8,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_swoosh_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 transition_swoosh_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-transition-swoosh-02-03.wav",
+          "duration_ms": 4133.3,
+          "peak_db": -4.4,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_swoosh_02",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 transition_swoosh_02.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-heavy-whoosh-01-04.wav",
+          "duration_ms": 1538.1,
+          "peak_db": -4.2,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "heavy_whoosh_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 heavy_whoosh_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-heavy-whoosh-02-05.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -6.0,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "heavy_whoosh_02",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 heavy_whoosh_02.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-cinematic-whoosh-01-06.wav",
+          "duration_ms": 2387.3,
+          "peak_db": -3.1,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "cinematic_whoosh_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 cinematic_whoosh_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-fast-swoosh-02-07.wav",
+          "duration_ms": 4074.5,
+          "peak_db": -3.7,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "fast_swoosh_02",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 fast_swoosh_02.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-dark-whoosh-02-08.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -3.1,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "dark_whoosh_02",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 dark_whoosh_02.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-dark-whoosh-01-09.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -4.5,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "dark_whoosh_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 dark_whoosh_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-cinematic-whoosh-02-10.wav",
+          "duration_ms": 1222.0,
+          "peak_db": -2.9,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "davinci-flow",
+          "source_id": "cinematic_whoosh_02",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 cinematic_whoosh_02.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-10-fast-rise-whoosh-hit-11.wav",
+          "duration_ms": 3079.9,
+          "peak_db": -3.8,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "10_fast_rise_whoosh_hit",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Whoosh \u2014 10_fast_rise_whoosh_hit.mp3 (from existing collection)."
+        },
+        {
+          "file": "whoosh/whoosh-air-woosh-12.wav",
+          "duration_ms": 1638.8,
+          "peak_db": -3.0,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1489",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Air woosh",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1489/1489-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-arrow-whoosh-13.wav",
+          "duration_ms": 377.1,
+          "peak_db": -3.0,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1491",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Arrow whoosh",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1491/1491-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-fast-rocket-whoosh-14.wav",
+          "duration_ms": 3610.4,
+          "peak_db": -3.5,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1714",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Fast rocket whoosh",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1714/1714-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-cinematic-whoosh-fast-transition-15.wav",
+          "duration_ms": 1304.8,
+          "peak_db": -4.8,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1492",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Cinematic whoosh fast transition",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1492/1492-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-cinematic-tunnel-reverb-woosh-16.wav",
+          "duration_ms": 5884.1,
+          "peak_db": -3.4,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1486",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Cinematic tunnel reverb woosh",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1486/1486-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-fast-whoosh-transition-17.wav",
+          "duration_ms": 768.9,
+          "peak_db": -7.8,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1490",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Fast whoosh transition",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1490/1490-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-cinematic-whoosh-stutter-18.wav",
+          "duration_ms": 2203.2,
+          "peak_db": -4.1,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "787",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Cinematic whoosh stutter",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/787/787-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-metal-hit-woosh-19.wav",
+          "duration_ms": 424.7,
+          "peak_db": -4.2,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "whoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1485",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Metal hit woosh",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1485/1485-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-fast-small-sweep-transition-20.wav",
+          "duration_ms": 678.2,
+          "peak_db": -6.8,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "swoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "166",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Fast small sweep transition",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/166/166-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-transition-windy-swoosh-21.wav",
+          "duration_ms": 2770.4,
+          "peak_db": -5.1,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "swoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1474",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Transition windy swoosh",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1474/1474-preview.mp3"
+        },
+        {
+          "file": "whoosh/whoosh-vacuum-swoosh-transition-22.wav",
+          "duration_ms": 2109.9,
+          "peak_db": -7.9,
+          "tags": [
+            "sweep",
+            "movement",
+            "transition",
+            "swoosh"
+          ],
+          "source": "mixkit",
+          "source_id": "1465",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Vacuum swoosh transition",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1465/1465-preview.mp3"
+        }
+      ]
+    },
+    "impact": {
+      "count": 18,
+      "total_duration_ms": 88071.5,
+      "sounds": [
+        {
+          "file": "impact/impact-14-01.wav",
+          "duration_ms": 4141.9,
+          "peak_db": -4.7,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_14",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_14.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-08-02.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -4.1,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_08",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_08.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-22-scary-boom-03.wav",
+          "duration_ms": 4141.9,
+          "peak_db": -4.7,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "22_scary_boom",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 22_scary_boom.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-07-04.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -3.0,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_07",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_07.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-06-05.wav",
+          "duration_ms": 2393.3,
+          "peak_db": -3.0,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_06",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_06.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-05-06.wav",
+          "duration_ms": 4476.8,
+          "peak_db": -3.6,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_05",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_05.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-01-07.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -3.0,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-02-08.wav",
+          "duration_ms": 5143.7,
+          "peak_db": -3.1,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_02",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_02.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-19-09.wav",
+          "duration_ms": 2147.4,
+          "peak_db": -3.0,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_19",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_19.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-18-10.wav",
+          "duration_ms": 4724.3,
+          "peak_db": -3.0,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_18",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_18.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-20-11.wav",
+          "duration_ms": 3561.0,
+          "peak_db": -3.9,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_20",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_20.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-09-12.wav",
+          "duration_ms": 5178.3,
+          "peak_db": -3.0,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "impacts"
+          ],
+          "source": "davinci-flow",
+          "source_id": "impact_09",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 impact_09.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-23-epic-orchestral-hit-13.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -4.9,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "23_epic_orchestral_hit",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 23_epic_orchestral_hit.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-06-boom-14.wav",
+          "duration_ms": 5143.7,
+          "peak_db": -3.1,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "06_boom",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 06_boom.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-08-trailer-hits-15.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -7.7,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "08_trailer_hits",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 08_trailer_hits.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-18-deep-piano-hit-16.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -4.2,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "18_deep_piano_hit",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 18_deep_piano_hit.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-12-classic-rise-and-hit-17.wav",
+          "duration_ms": 5019.2,
+          "peak_db": -3.9,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "12_classic_rise_and_hit",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 12_classic_rise_and_hit.mp3 (from existing collection)."
+        },
+        {
+          "file": "impact/impact-03-deep-cinematic-hit-18.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -3.0,
+          "tags": [
+            "hit",
+            "boom",
+            "transient",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "03_deep_cinematic_hit",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Impact \u2014 03_deep_cinematic_hit.mp3 (from existing collection)."
+        }
+      ]
+    },
+    "riser": {
+      "count": 10,
+      "total_duration_ms": 83945.4,
+      "sounds": [
+        {
+          "file": "riser/riser-03-01.wav",
+          "duration_ms": 12000.0,
+          "peak_db": -5.2,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_03",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_03.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-15-02.wav",
+          "duration_ms": 2790.6,
+          "peak_db": -5.7,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_15",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_15.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-14-03.wav",
+          "duration_ms": 7314.1,
+          "peak_db": -6.4,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_14",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_14.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-13-04.wav",
+          "duration_ms": 5223.1,
+          "peak_db": -3.3,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_13",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_13.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-12-05.wav",
+          "duration_ms": 5019.2,
+          "peak_db": -3.9,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_12",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_12.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-11-06.wav",
+          "duration_ms": 8674.5,
+          "peak_db": -7.0,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_11",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_11.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-07-07.wav",
+          "duration_ms": 12000.0,
+          "peak_db": -8.8,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_07",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_07.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-02-08.wav",
+          "duration_ms": 6923.9,
+          "peak_db": -5.4,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_02",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_02.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-01-09.wav",
+          "duration_ms": 12000.0,
+          "peak_db": -6.5,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "riser/riser-04-10.wav",
+          "duration_ms": 12000.0,
+          "peak_db": -4.2,
+          "tags": [
+            "build",
+            "tension",
+            "rise",
+            "risers"
+          ],
+          "source": "davinci-flow",
+          "source_id": "riser_04",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Riser \u2014 riser_04.mp3 (from existing collection)."
+        }
+      ]
+    },
+    "drop": {
+      "count": 10,
+      "total_duration_ms": 56800.5,
+      "sounds": [
+        {
+          "file": "drop/drop-05-01.wav",
+          "duration_ms": 2104.2,
+          "peak_db": -3.1,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "drops"
+          ],
+          "source": "davinci-flow",
+          "source_id": "drop_05",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 drop_05.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-22-scary-boom-02.wav",
+          "duration_ms": 4141.9,
+          "peak_db": -4.7,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "22_scary_boom",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 22_scary_boom.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-26-cinematic-bass-swell-03.wav",
+          "duration_ms": 10000.0,
+          "peak_db": -4.1,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "26_cinematic_bass_swell",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 26_cinematic_bass_swell.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-02-04.wav",
+          "duration_ms": 10000.0,
+          "peak_db": -5.4,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "drops"
+          ],
+          "source": "davinci-flow",
+          "source_id": "drop_02",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 drop_02.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-08-05.wav",
+          "duration_ms": 4451.9,
+          "peak_db": -3.2,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "drops"
+          ],
+          "source": "davinci-flow",
+          "source_id": "drop_08",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 drop_08.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-03-06.wav",
+          "duration_ms": 6340.8,
+          "peak_db": -3.0,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "drops"
+          ],
+          "source": "davinci-flow",
+          "source_id": "drop_03",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 drop_03.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-01-07.wav",
+          "duration_ms": 3324.5,
+          "peak_db": -3.0,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "drops"
+          ],
+          "source": "davinci-flow",
+          "source_id": "drop_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 drop_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-06-boom-08.wav",
+          "duration_ms": 5143.7,
+          "peak_db": -3.1,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "cinematic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "06_boom",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 06_boom.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-06-09.wav",
+          "duration_ms": 10000.0,
+          "peak_db": -3.4,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "drops"
+          ],
+          "source": "davinci-flow",
+          "source_id": "drop_06",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 drop_06.mp3 (from existing collection)."
+        },
+        {
+          "file": "drop/drop-10-10.wav",
+          "duration_ms": 1293.5,
+          "peak_db": -2.5,
+          "tags": [
+            "bass",
+            "boom",
+            "drop",
+            "drops"
+          ],
+          "source": "davinci-flow",
+          "source_id": "drop_10",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Drop \u2014 drop_10.mp3 (from existing collection)."
+        }
+      ]
+    },
+    "transition": {
+      "count": 18,
+      "total_duration_ms": 67449.1,
+      "sounds": [
+        {
+          "file": "transition/transition-01-01.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -3.7,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_01",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_01.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-28-02.wav",
+          "duration_ms": 953.7,
+          "peak_db": -3.0,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_28",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_28.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-04-03.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -3.7,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_04",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_04.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-23-04.wav",
+          "duration_ms": 434.8,
+          "peak_db": -4.3,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_23",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_23.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-22-05.wav",
+          "duration_ms": 2393.3,
+          "peak_db": -3.0,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_22",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_22.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-21-06.wav",
+          "duration_ms": 4097.4,
+          "peak_db": -3.2,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_21",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_21.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-09-07.wav",
+          "duration_ms": 5344.8,
+          "peak_db": -4.0,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_09",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_09.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-25-08.wav",
+          "duration_ms": 2881.1,
+          "peak_db": -4.9,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_25",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_25.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-19-09.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -3.0,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_19",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_19.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-30-10.wav",
+          "duration_ms": 434.8,
+          "peak_db": -4.3,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_30",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_30.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-18-11.wav",
+          "duration_ms": 3324.5,
+          "peak_db": -3.0,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_18",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_18.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-24-12.wav",
+          "duration_ms": 5143.7,
+          "peak_db": -3.1,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_24",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_24.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-26-13.wav",
+          "duration_ms": 4564.5,
+          "peak_db": -5.0,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_26",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_26.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-27-14.wav",
+          "duration_ms": 2387.3,
+          "peak_db": -3.1,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_27",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_27.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-16-15.wav",
+          "duration_ms": 4970.3,
+          "peak_db": -4.1,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_16",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_16.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-15-16.wav",
+          "duration_ms": 4131.6,
+          "peak_db": -3.3,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_15",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_15.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-10-17.wav",
+          "duration_ms": 6000.0,
+          "peak_db": -3.5,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_10",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_10.mp3 (from existing collection)."
+        },
+        {
+          "file": "transition/transition-13-18.wav",
+          "duration_ms": 2387.3,
+          "peak_db": -3.1,
+          "tags": [
+            "sweep",
+            "swish",
+            "cut",
+            "transitions"
+          ],
+          "source": "davinci-flow",
+          "source_id": "transition_13",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Transition \u2014 transition_13.mp3 (from existing collection)."
+        }
+      ]
+    },
+    "glitch": {
+      "count": 14,
+      "total_duration_ms": 18966.4,
+      "sounds": [
+        {
+          "file": "glitch/glitch-button-01.wav",
+          "duration_ms": 101.1,
+          "peak_db": -3.0,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "davinci-flow",
+          "source_id": "button-glitch",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 button-glitch.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-tv-channel-change-static-02.wav",
+          "duration_ms": 239.9,
+          "peak_db": -3.8,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "davinci-flow",
+          "source_id": "tv-channel-change-static",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 tv-channel-change-static.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-short-03.wav",
+          "duration_ms": 549.9,
+          "peak_db": -6.7,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "davinci-flow",
+          "source_id": "short-glitch",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 short-glitch.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-electronic-digital-beep-04.wav",
+          "duration_ms": 2801.2,
+          "peak_db": -5.2,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "electronic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "electronic_digital_beep",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 electronic_digital_beep.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-digital-05.wav",
+          "duration_ms": 1005.3,
+          "peak_db": -4.1,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "davinci-flow",
+          "source_id": "digital-glitch",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 digital-glitch.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-clip-06.wav",
+          "duration_ms": 955.5,
+          "peak_db": -1.4,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "davinci-flow",
+          "source_id": "glitch-sound",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 glitch-sound.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-electronic-glitch-digital-07.wav",
+          "duration_ms": 1005.3,
+          "peak_db": -4.1,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "electronic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "electronic_glitch_digital",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 electronic_glitch_digital.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-digital-error-08.wav",
+          "duration_ms": 1368.9,
+          "peak_db": -2.7,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "davinci-flow",
+          "source_id": "digital-glitch-error",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 digital-glitch-error.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-distorted-09.wav",
+          "duration_ms": 940.7,
+          "peak_db": -1.6,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "davinci-flow",
+          "source_id": "distorted-glitch",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 distorted-glitch.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-electronic-glitch-distorted-10.wav",
+          "duration_ms": 940.7,
+          "peak_db": -1.6,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "electronic"
+          ],
+          "source": "davinci-flow",
+          "source_id": "electronic_glitch_distorted",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Glitch \u2014 electronic_glitch_distorted.mp3 (from existing collection)."
+        },
+        {
+          "file": "glitch/glitch-small-electric-glitch-11.wav",
+          "duration_ms": 485.9,
+          "peak_db": -3.3,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "mixkit",
+          "source_id": "2595",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Small electric glitch",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/2595/2595-preview.mp3"
+        },
+        {
+          "file": "glitch/glitch-glitch-static-12.wav",
+          "duration_ms": 572.0,
+          "peak_db": -3.0,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "mixkit",
+          "source_id": "1457",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Glitch static",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1457/1457-preview.mp3"
+        },
+        {
+          "file": "glitch/glitch-terror-radio-frequency-13.wav",
+          "duration_ms": 4000.0,
+          "peak_db": -5.5,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "mixkit",
+          "source_id": "2566",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Terror radio frequency",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/2566/2566-preview.mp3"
+        },
+        {
+          "file": "glitch/glitch-broken-radio-frequency-signal-14.wav",
+          "duration_ms": 4000.0,
+          "peak_db": -3.9,
+          "tags": [
+            "digital",
+            "stutter",
+            "tear",
+            "glitch"
+          ],
+          "source": "mixkit",
+          "source_id": "2563",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Broken radio frequency signal",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/2563/2563-preview.mp3"
+        }
+      ]
+    },
+    "ui": {
+      "count": 10,
+      "total_duration_ms": 4328.2,
+      "sounds": [
+        {
+          "file": "ui/ui-error-01.wav",
+          "duration_ms": 795.2,
+          "peak_db": -3.0,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "ui"
+          ],
+          "source": "davinci-flow",
+          "source_id": "error-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 error-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-button-click-02.wav",
+          "duration_ms": 375.8,
+          "peak_db": -3.5,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "clicks"
+          ],
+          "source": "davinci-flow",
+          "source_id": "button-click-sound",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 button-click-sound.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-snap-03.wav",
+          "duration_ms": 134.9,
+          "peak_db": -3.2,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "clicks"
+          ],
+          "source": "davinci-flow",
+          "source_id": "snap-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 snap-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-click-04.wav",
+          "duration_ms": 724.4,
+          "peak_db": -3.3,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "clicks"
+          ],
+          "source": "davinci-flow",
+          "source_id": "click-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 click-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-button-click-05.wav",
+          "duration_ms": 291.1,
+          "peak_db": -2.4,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "clicks"
+          ],
+          "source": "davinci-flow",
+          "source_id": "button-click-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 button-click-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-clicking-06.wav",
+          "duration_ms": 273.3,
+          "peak_db": -3.5,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "clicks"
+          ],
+          "source": "davinci-flow",
+          "source_id": "clicking-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 clicking-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-finger-snap-07.wav",
+          "duration_ms": 137.5,
+          "peak_db": -2.3,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "clicks"
+          ],
+          "source": "davinci-flow",
+          "source_id": "finger-snap",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 finger-snap.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-pop-08.wav",
+          "duration_ms": 179.8,
+          "peak_db": -3.0,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "clicks"
+          ],
+          "source": "davinci-flow",
+          "source_id": "pop-sound-effect",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 pop-sound-effect.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-error-tone-09.wav",
+          "duration_ms": 834.1,
+          "peak_db": -4.9,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "ui"
+          ],
+          "source": "davinci-flow",
+          "source_id": "error-tone",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 error-tone.mp3 (from existing collection)."
+        },
+        {
+          "file": "ui/ui-error-10.wav",
+          "duration_ms": 582.1,
+          "peak_db": -3.0,
+          "tags": [
+            "interface",
+            "click",
+            "pop",
+            "ui"
+          ],
+          "source": "davinci-flow",
+          "source_id": "error-sound",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Ui \u2014 error-sound.mp3 (from existing collection)."
+        }
+      ]
+    },
+    "vinyl": {
+      "count": 11,
+      "total_duration_ms": 10846.5,
+      "sounds": [
+        {
+          "file": "vinyl/vinyl-special-vinyl-scratch-01.wav",
+          "duration_ms": 540.1,
+          "peak_db": -3.8,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record",
+            "special"
+          ],
+          "source": "davinci-flow",
+          "source_id": "special_vinyl_scratch",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Vinyl \u2014 special_vinyl_scratch.mp3 (from existing collection)."
+        },
+        {
+          "file": "vinyl/vinyl-special-record-scratch-02.wav",
+          "duration_ms": 540.1,
+          "peak_db": -3.8,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record",
+            "special"
+          ],
+          "source": "davinci-flow",
+          "source_id": "special_record_scratch",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Vinyl \u2014 special_record_scratch.mp3 (from existing collection)."
+        },
+        {
+          "file": "vinyl/vinyl-record-stop-03.wav",
+          "duration_ms": 365.9,
+          "peak_db": -3.0,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record",
+            "viral_tiktok"
+          ],
+          "source": "davinci-flow",
+          "source_id": "record_stop",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Vinyl \u2014 record_stop.mp3 (from existing collection)."
+        },
+        {
+          "file": "vinyl/vinyl-sfx-24-radio-crackle-04.wav",
+          "duration_ms": 1000.0,
+          "peak_db": -3.0,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record",
+            "f1_downloaded"
+          ],
+          "source": "davinci-flow",
+          "source_id": "sfx_24_radio_crackle",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Vinyl \u2014 sfx_24_radio_crackle.wav (from existing collection)."
+        },
+        {
+          "file": "vinyl/vinyl-record-player-vinyl-scratch-05.wav",
+          "duration_ms": 1091.9,
+          "peak_db": -4.5,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record"
+          ],
+          "source": "mixkit",
+          "source_id": "702",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Record player vinyl scratch",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/702/702-preview.mp3"
+        },
+        {
+          "file": "vinyl/vinyl-vinyl-record-slow-down-06.wav",
+          "duration_ms": 5000.0,
+          "peak_db": -3.0,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record"
+          ],
+          "source": "mixkit",
+          "source_id": "711",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Vinyl record slow down",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/711/711-preview.mp3"
+        },
+        {
+          "file": "vinyl/vinyl-vinyl-forward-and-back-fast-scratch-07.wav",
+          "duration_ms": 604.0,
+          "peak_db": -3.0,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record"
+          ],
+          "source": "mixkit",
+          "source_id": "703",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Vinyl forward and back fast scratch",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/703/703-preview.mp3"
+        },
+        {
+          "file": "vinyl/vinyl-vinyl-forward-and-back-scratch-08.wav",
+          "duration_ms": 809.2,
+          "peak_db": -3.0,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record"
+          ],
+          "source": "mixkit",
+          "source_id": "705",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Vinyl forward and back scratch",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/705/705-preview.mp3"
+        },
+        {
+          "file": "vinyl/vinyl-record-player-needle-drop-on-vinyl-09.wav",
+          "duration_ms": 204.1,
+          "peak_db": -3.3,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record"
+          ],
+          "source": "mixkit",
+          "source_id": "701",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Record player needle drop on vinyl",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/701/701-preview.mp3"
+        },
+        {
+          "file": "vinyl/vinyl-swell-vinyl-record-scratch-10.wav",
+          "duration_ms": 470.3,
+          "peak_db": -6.3,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record"
+          ],
+          "source": "mixkit",
+          "source_id": "709",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Swell vinyl record scratch",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/709/709-preview.mp3"
+        },
+        {
+          "file": "vinyl/vinyl-dj-record-swipe-11.wav",
+          "duration_ms": 220.9,
+          "peak_db": -6.8,
+          "tags": [
+            "vinyl",
+            "scratch",
+            "record"
+          ],
+          "source": "mixkit",
+          "source_id": "708",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "DJ record swipe",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/708/708-preview.mp3"
+        }
+      ]
+    },
+    "tape": {
+      "count": 9,
+      "total_duration_ms": 18009.3,
+      "sounds": [
+        {
+          "file": "tape/tape-special-rewind-01.wav",
+          "duration_ms": 1407.7,
+          "peak_db": -5.1,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog",
+            "special"
+          ],
+          "source": "davinci-flow",
+          "source_id": "special_rewind",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Tape \u2014 special_rewind.mp3 (from existing collection)."
+        },
+        {
+          "file": "tape/tape-special-tape-stop-02.wav",
+          "duration_ms": 386.3,
+          "peak_db": -6.3,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog",
+            "special"
+          ],
+          "source": "davinci-flow",
+          "source_id": "special_tape_stop",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Tape \u2014 special_tape_stop.mp3 (from existing collection)."
+        },
+        {
+          "file": "tape/tape-fast-tape-rewind-cinematic-transition-03.wav",
+          "duration_ms": 1762.5,
+          "peak_db": -4.5,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog"
+          ],
+          "source": "mixkit",
+          "source_id": "1092",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Fast tape rewind cinematic transition",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1092/1092-preview.mp3"
+        },
+        {
+          "file": "tape/tape-reel-to-reel-rewind-04.wav",
+          "duration_ms": 3737.4,
+          "peak_db": -7.2,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog"
+          ],
+          "source": "mixkit",
+          "source_id": "1095",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Reel to reel rewind",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1095/1095-preview.mp3"
+        },
+        {
+          "file": "tape/tape-cassette-tape-stretch-05.wav",
+          "duration_ms": 2102.4,
+          "peak_db": -3.1,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog"
+          ],
+          "source": "mixkit",
+          "source_id": "3097",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Cassette tape stretch",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/3097/3097-preview.mp3"
+        },
+        {
+          "file": "tape/tape-tape-switch-06.wav",
+          "duration_ms": 455.0,
+          "peak_db": -3.3,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog"
+          ],
+          "source": "mixkit",
+          "source_id": "3096",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Tape switch",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/3096/3096-preview.mp3"
+        },
+        {
+          "file": "tape/tape-tape-rewind-cinematic-transition-07.wav",
+          "duration_ms": 4000.0,
+          "peak_db": -3.4,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog"
+          ],
+          "source": "mixkit",
+          "source_id": "1088",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Tape rewind cinematic transition",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1088/1088-preview.mp3"
+        },
+        {
+          "file": "tape/tape-tape-measure-extend-08.wav",
+          "duration_ms": 546.0,
+          "peak_db": -2.3,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog"
+          ],
+          "source": "mixkit",
+          "source_id": "810",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Tape measure extend",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/810/810-preview.mp3"
+        },
+        {
+          "file": "tape/tape-glitch-sci-fi-rewind-transition-09.wav",
+          "duration_ms": 3612.0,
+          "peak_db": -4.7,
+          "tags": [
+            "tape",
+            "rewind",
+            "analog"
+          ],
+          "source": "mixkit",
+          "source_id": "1093",
+          "license": "Mixkit License",
+          "attribution": null,
+          "description": "Glitch sci fi rewind transition",
+          "source_url": "https://assets.mixkit.co/active_storage/sfx/1093/1093-preview.mp3"
+        }
+      ]
+    },
+    "texture": {
+      "count": 8,
+      "total_duration_ms": 160000.0,
+      "sounds": [
+        {
+          "file": "texture/texture-02-loud-thunder-01.wav",
+          "duration_ms": 20000.0,
+          "peak_db": -3.2,
+          "tags": [
+            "ambient",
+            "atmosphere",
+            "drone",
+            "nature"
+          ],
+          "source": "davinci-flow",
+          "source_id": "02_loud_thunder",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Texture \u2014 02_loud_thunder.mp3 (from existing collection)."
+        },
+        {
+          "file": "texture/texture-ambient-04-02.wav",
+          "duration_ms": 20000.0,
+          "peak_db": -5.9,
+          "tags": [
+            "ambient",
+            "atmosphere",
+            "drone"
+          ],
+          "source": "davinci-flow",
+          "source_id": "ambient_04",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Texture \u2014 ambient_04.mp3 (from existing collection)."
+        },
+        {
+          "file": "texture/texture-ambient-07-03.wav",
+          "duration_ms": 20000.0,
+          "peak_db": -11.2,
+          "tags": [
+            "ambient",
+            "atmosphere",
+            "drone"
+          ],
+          "source": "davinci-flow",
+          "source_id": "ambient_07",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Texture \u2014 ambient_07.mp3 (from existing collection)."
+        },
+        {
+          "file": "texture/texture-ambient-08-04.wav",
+          "duration_ms": 20000.0,
+          "peak_db": -4.4,
+          "tags": [
+            "ambient",
+            "atmosphere",
+            "drone"
+          ],
+          "source": "davinci-flow",
+          "source_id": "ambient_08",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Texture \u2014 ambient_08.mp3 (from existing collection)."
+        },
+        {
+          "file": "texture/texture-ambient-09-05.wav",
+          "duration_ms": 20000.0,
+          "peak_db": -7.0,
+          "tags": [
+            "ambient",
+            "atmosphere",
+            "drone"
+          ],
+          "source": "davinci-flow",
+          "source_id": "ambient_09",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Texture \u2014 ambient_09.mp3 (from existing collection)."
+        },
+        {
+          "file": "texture/texture-01-thunder-06.wav",
+          "duration_ms": 20000.0,
+          "peak_db": -4.3,
+          "tags": [
+            "ambient",
+            "atmosphere",
+            "drone",
+            "nature"
+          ],
+          "source": "davinci-flow",
+          "source_id": "01_thunder",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Texture \u2014 01_thunder.mp3 (from existing collection)."
+        },
+        {
+          "file": "texture/texture-11-fire-crackling-07.wav",
+          "duration_ms": 20000.0,
+          "peak_db": -3.4,
+          "tags": [
+            "ambient",
+            "atmosphere",
+            "drone",
+            "nature"
+          ],
+          "source": "davinci-flow",
+          "source_id": "11_fire_crackling",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Texture \u2014 11_fire_crackling.mp3 (from existing collection)."
+        },
+        {
+          "file": "texture/texture-14-wind-blowing-storm-08.wav",
+          "duration_ms": 20000.0,
+          "peak_db": -2.9,
+          "tags": [
+            "ambient",
+            "atmosphere",
+            "drone",
+            "nature"
+          ],
+          "source": "davinci-flow",
+          "source_id": "14_wind_blowing_storm",
+          "license": "internal-prior-collection",
+          "attribution": null,
+          "description": "Texture \u2014 14_wind_blowing_storm.mp3 (from existing collection)."
+        }
+      ]
+    }
+  }
+}
