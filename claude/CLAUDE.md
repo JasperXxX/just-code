@@ -78,3 +78,18 @@ Do NOT include `Co-Authored-By: Claude ...` (or any AI co-author footer) in any 
 In subagent-driven-development mode, do not steamroll through every task. Trivial setup (deps, configs, gitignore tweaks) — fine to delegate. First **real** code task in any sequence — pause, present the task and prepared code, let the user run/test/commit themselves. Once they confirm the pattern works, ask whether to resume autopilot or continue with manual checkpoints.
 
 **Why:** Letting agents commit autonomously on real code, before the user has verified the pattern, leads to branch-hygiene mishaps and lost trust. Manual checkpoint on first code task per sequence builds confidence.
+
+### Set an ETA for non-trivial tasks
+For any task that will plausibly run longer than 30 seconds (multi-tool work, research, several edits, dispatching a subagent), the first action of the response should be:
+
+```bash
+~/.claude/bin/claude-eta <duration>
+```
+
+Examples: `claude-eta 30s`, `claude-eta 2m`, `claude-eta 5min`, `claude-eta 1h`. When in doubt, call it — generous is better than nothing. Skip only for pure-text answers (a quick explanation, a single question).
+
+A `UserPromptSubmit` hook (`hooks/inject-eta-reminder.sh`) injects this reminder on every prompt so the model doesn't have to remember it from the rule alone.
+
+**Why:** The statusline reads `/tmp/claude-eta-$SID.txt` and shows a countdown bar against the estimate — without one it falls back to a fixed 90s cap, which is meaningless for longer runs. The number in the statusline is **remaining** time, not elapsed.
+
+**Re-estimate while running:** The first ETA is a guess and will often be wrong. After any larger step (subagent finished, big tool sequence done) check whether the original estimate still holds. If elapsed is past ~50% of the original ETA and substantial work remains, call `claude-eta <new>` again. The new duration is measured **from now** — `claude-eta 3m` always means "three more minutes from this moment," not "three minutes total from task start." An honest correction is better than a bar that hits 0:00 and then runs another five minutes in red overrun.

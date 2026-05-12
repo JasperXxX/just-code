@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# claude-eta <duration> — write an ETA estimate for the currently active
+# Claude Code session. The statusline reads /tmp/claude-eta-$SID.txt and
+# displays it next to the elapsed-time bar.
+#
+# Examples:
+#   claude-eta 30s
+#   claude-eta 2m
+#   claude-eta 5min
+#   claude-eta 1h
+#   claude-eta 90        # bare integer = seconds
+#
+# Session detection: most-recently-touched /tmp/claude-running-* sentinel.
+# That sentinel is created by the UserPromptSubmit hook moments before this
+# CLI runs, so for a single user it reliably points at the active session.
+
+set -euo pipefail
+
+duration=${1:-}
+if [ -z "$duration" ]; then
+  echo "usage: claude-eta <duration>  (e.g. 30s, 2m, 5min, 1h, 90)" >&2
+  exit 2
+fi
+
+parse_to_secs() {
+  local d="$1"
+  case "$d" in
+    *min) printf '%s' "$(( ${d%min} * 60 ))" ;;
+    *m)   printf '%s' "$(( ${d%m} * 60 ))" ;;
+    *hr)  printf '%s' "$(( ${d%hr} * 3600 ))" ;;
+    *h)   printf '%s' "$(( ${d%h} * 3600 ))" ;;
+    *s)   printf '%s' "${d%s}" ;;
+    *)
+      if [[ "$d" =~ ^[0-9]+$ ]]; then
+        printf '%s' "$d"
+      else
+        return 1
+      fi
+      ;;
+  esac
+}
+
+secs=$(parse_to_secs "$duration") || {
+  echo "claude-eta: cannot parse duration '$duration' (try 30s, 2m, 5min, 1h)" >&2
+  exit 2
+}
+
+if ! [[ "$secs" =~ ^[0-9]+$ ]] || [ "$secs" -lt 1 ]; then
+  echo "claude-eta: parsed duration is not a positive integer ($secs)" >&2
+  exit 2
+fi
+
+# Optional explicit session id as $2; otherwise pick the most-recent sentinel.
+sid=${2:-}
+if [ -z "$sid" ]; then
+  running=$(ls -t /tmp/claude-running-* 2>/dev/null | head -n1 || true)
+  if [ -z "$running" ]; then
+    echo "claude-eta: no active Claude session sentinel found in /tmp" >&2
+    exit 1
+  fi
+  sid=$(basename "$running" | sed 's/^claude-running-//')
+fi
+
+eta_file="/tmp/claude-eta-$sid.txt"
+
+# The duration argument means "approximately this much time remaining FROM NOW",
+# not "this much time total from the task start". The statusline computes
+# remaining as (cap - elapsed_since_task_start), so we need to write
+# (elapsed_so_far + requested_remaining) into the file. That way the first call
+# (elapsed≈0) behaves the same as before, but a re-estimate mid-run produces
+# a sane countdown instead of an immediate overrun.
+running_file="/tmp/claude-running-$sid"
+elapsed_so_far=0
+if [ -f "$running_file" ]; then
+  start_mtime=$(stat -f %m "$running_file" 2>/dev/null || echo "")
+  if [ -n "$start_mtime" ]; then
+    now=$(date +%s)
+    elapsed_so_far=$(( now - start_mtime ))
+    [ "$elapsed_so_far" -lt 0 ] && elapsed_so_far=0
+  fi
+fi
+
+total=$(( elapsed_so_far + secs ))
+printf '%s' "$total" > "$eta_file"
+
+mins=$(( secs / 60 ))
+rem=$(( secs % 60 ))
+if [ "$mins" -gt 0 ]; then
+  pretty=$(printf '%d:%02d' "$mins" "$rem")
+else
+  pretty="${secs}s"
+fi
+if [ "$elapsed_so_far" -gt 5 ]; then
+  echo "claude-eta: ${pretty} remaining (re-estimate after ${elapsed_so_far}s) for session ${sid:0:8}…"
+else
+  echo "claude-eta: ETA ${pretty} set for session ${sid:0:8}…"
+fi

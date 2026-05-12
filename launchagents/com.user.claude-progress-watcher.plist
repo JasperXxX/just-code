@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.claude-progress-watcher</string>
+
+    <!-- Replace USERNAME with your macOS username (or use a $HOME-substituted
+         absolute path) — launchd doesn't expand ~ or $HOME. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/USERNAME/.claude/bin/claude-progress-watcher</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/claude-progress-watcher.out.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/claude-progress-watcher.err.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+</dict>
+</plist>
