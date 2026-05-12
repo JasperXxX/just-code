@@ -1,0 +1,195 @@
+#!/usr/bin/env bash
+# claude-progress-watcher — polls known long-running processes and feeds
+# their state into ~/.claude/bin/claude-progress so the statusline shows
+# render/print progress without the user wiring it manually.
+#
+# Detectors (first hit wins, evaluated top-down):
+#   1. OctoPrint Prusa  — has %, ETA   (highest priority because it's a real number)
+#   2. Moonraker Voron  — has %
+#   3. ComfyUI          — indeterminate (queue running)
+#   4. Remotion         — indeterminate (process)
+#   5. ffmpeg           — indeterminate (process)
+#   6. DaVinci Bridge   — indeterminate (if reachable)
+#
+# Run manually:    claude-progress-watcher
+# Run as daemon:   launchctl load ~/Library/LaunchAgents/com.user.claude-progress-watcher.plist
+# Logs to:         /tmp/claude-progress-watcher.log
+
+set -uo pipefail
+
+CONFIG="${HOME}/.claude/progress-watcher.env"
+[ -f "$CONFIG" ] && source "$CONFIG"
+
+PROGRESS_BIN="${HOME}/.claude/bin/claude-progress"
+WATCH_INTERVAL="${WATCH_INTERVAL:-2}"
+LOG_FILE="/tmp/claude-progress-watcher.log"
+
+# Use a global progress file so any session's statusline picks it up.
+unset CLAUDE_PROGRESS_FILE
+unset CLAUDE_SESSION_ID
+
+log() {
+  echo "[$(date '+%H:%M:%S')] $*" >> "$LOG_FILE"
+}
+
+# Curl wrapper: 1s connect, 2s total, fail silently on any hiccup.
+fetch() {
+  curl -sS --connect-timeout 1 --max-time 2 "$@" 2>/dev/null
+}
+
+# --- Detectors ---------------------------------------------------------------
+# Each prints "label|percent|eta" on hit (percent and eta may be empty),
+# nothing on miss. Exit 0 on hit, 1 on miss.
+
+detect_octoprint_prusa() {
+  [ -z "${OCTOPRINT_PRUSA_URL:-}" ] && return 1
+  [ -z "${OCTOPRINT_PRUSA_KEY:-}" ] && return 1
+  local resp
+  resp=$(fetch -H "X-Api-Key: ${OCTOPRINT_PRUSA_KEY}" "${OCTOPRINT_PRUSA_URL}/api/job") || return 1
+  [ -z "$resp" ] && return 1
+  local state pct eta_sec
+  state=$(printf '%s' "$resp" | jq -r '.state // empty' 2>/dev/null)
+  case "$state" in
+    Printing|Pausing|Paused) ;;
+    *) return 1 ;;
+  esac
+  pct=$(printf '%s' "$resp" | jq -r '.progress.completion // empty' 2>/dev/null)
+  eta_sec=$(printf '%s' "$resp" | jq -r '.progress.printTimeLeft // empty' 2>/dev/null)
+  [ -z "$pct" ] && return 1
+  pct=${pct%.*}
+  local eta=""
+  if [ -n "$eta_sec" ] && [ "$eta_sec" != "null" ]; then
+    eta=$(format_eta "$eta_sec")
+  fi
+  printf 'Prusa Print|%s|%s' "$pct" "$eta"
+}
+
+detect_moonraker_voron() {
+  [ -z "${MOONRAKER_VORON_URL:-}" ] && return 1
+  local resp
+  resp=$(fetch "${MOONRAKER_VORON_URL}/printer/objects/query?print_stats&virtual_sdcard&display_status") || return 1
+  [ -z "$resp" ] && return 1
+  local state pct
+  state=$(printf '%s' "$resp" | jq -r '.result.status.print_stats.state // empty' 2>/dev/null)
+  case "$state" in
+    printing|paused) ;;
+    *) return 1 ;;
+  esac
+  pct=$(printf '%s' "$resp" | jq -r '.result.status.display_status.progress // .result.status.virtual_sdcard.progress // empty' 2>/dev/null)
+  [ -z "$pct" ] && return 1
+  pct=$(awk -v v="$pct" 'BEGIN{printf "%d", v*100}')
+  printf 'Voron Print|%s|' "$pct"
+}
+
+detect_comfyui() {
+  [ -z "${COMFYUI_URL:-}" ] && return 1
+  local resp
+  resp=$(fetch "${COMFYUI_URL}/queue") || return 1
+  [ -z "$resp" ] && return 1
+  local running pending
+  running=$(printf '%s' "$resp" | jq -r '.queue_running | length' 2>/dev/null)
+  pending=$(printf '%s' "$resp" | jq -r '.queue_pending | length' 2>/dev/null)
+  if [ "${running:-0}" -gt 0 ] 2>/dev/null; then
+    if [ "${pending:-0}" -gt 0 ]; then
+      printf 'ComfyUI · +%s queued||' "$pending"
+    else
+      printf 'ComfyUI Render||'
+    fi
+    return 0
+  fi
+  return 1
+}
+
+detect_remotion() {
+  [ "${DETECT_REMOTION:-1}" != "1" ] && return 1
+  # Match real Remotion CLI invocations (node binary running remotion package),
+  # not text matches against arbitrary argv (which would catch claude prompts
+  # containing the word "remotion render").
+  if ps -axo command 2>/dev/null \
+     | grep -E "node.*(@remotion/cli|remotion/dist/cli|\.bin/remotion).*\b(render|still|lambda)\b" \
+     | grep -v grep \
+     | grep -v -- "--help" >/dev/null; then
+    printf 'Remotion Render||'
+    return 0
+  fi
+  return 1
+}
+
+detect_ffmpeg() {
+  [ "${DETECT_FFMPEG:-1}" != "1" ] && return 1
+  # pgrep -x matches the executable name only, never argv content.
+  if pgrep -x ffmpeg >/dev/null 2>&1; then
+    printf 'ffmpeg||'
+    return 0
+  fi
+  return 1
+}
+
+detect_davinci() {
+  [ "${DETECT_DAVINCI:-0}" != "1" ] && return 1
+  [ -z "${DAVINCI_BRIDGE_URL:-}" ] && return 1
+  if fetch "${DAVINCI_BRIDGE_URL}/status" >/dev/null; then
+    printf 'DaVinci Bridge||'
+    return 0
+  fi
+  return 1
+}
+
+format_eta() {
+  local secs=$1
+  if [ "$secs" -lt 60 ]; then
+    printf '%ds' "$secs"
+  elif [ "$secs" -lt 3600 ]; then
+    printf '%dm%02ds' $((secs / 60)) $((secs % 60))
+  else
+    printf '%dh%02dm' $((secs / 3600)) $(((secs % 3600) / 60))
+  fi
+}
+
+# --- Main loop ---------------------------------------------------------------
+log "watcher started (pid $$, interval ${WATCH_INTERVAL}s)"
+last_state=""
+
+trap 'log "watcher stopping"; "$PROGRESS_BIN" clear 2>/dev/null; exit 0' TERM INT
+
+while true; do
+  hit=""
+  for detector in detect_octoprint_prusa detect_moonraker_voron detect_comfyui detect_remotion detect_ffmpeg detect_davinci; do
+    if hit=$($detector 2>/dev/null); then
+      [ -n "$hit" ] && break
+    fi
+    hit=""
+  done
+
+  if [ -n "$hit" ]; then
+    label="${hit%%|*}"
+    rest="${hit#*|}"
+    percent="${rest%%|*}"
+    eta="${rest#*|}"
+    [ "$eta" = "$rest" ] && eta=""
+    [ "$percent" = "$rest" ] && percent=""
+
+    state="${label}|${percent}|${eta}"
+    if [ "$state" != "$last_state" ]; then
+      if [ -n "$percent" ] && [ "$percent" -ge 0 ] 2>/dev/null && [ "$percent" -le 100 ] 2>/dev/null; then
+        if [ -n "$eta" ]; then
+          "$PROGRESS_BIN" set "$label" "$percent" "$eta" 2>/dev/null
+        else
+          "$PROGRESS_BIN" set "$label" "$percent" 2>/dev/null
+        fi
+      else
+        "$PROGRESS_BIN" label "$label" 2>/dev/null
+      fi
+      log "set: $state"
+      last_state="$state"
+    fi
+  else
+    if [ -n "$last_state" ]; then
+      "$PROGRESS_BIN" clear 2>/dev/null
+      log "clear (no detector hit)"
+      last_state=""
+    fi
+  fi
+
+  sleep "$WATCH_INTERVAL"
+done

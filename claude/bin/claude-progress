@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+# claude-progress — write a status-line progress entry from any script.
+#
+# Usage:
+#   claude-progress set <label> <percent> [eta]   # 0–100, eta is free text
+#   claude-progress label <label>                 # indeterminate (no bar)
+#   claude-progress bump <delta>                  # add/subtract from current %
+#   claude-progress clear                         # remove the file
+#   claude-progress show                          # cat current JSON
+#
+# Per-session if $CLAUDE_SESSION_ID is set, otherwise global.
+# Override path with $CLAUDE_PROGRESS_FILE.
+
+set -euo pipefail
+
+if [ -n "${CLAUDE_PROGRESS_FILE:-}" ]; then
+  FILE="$CLAUDE_PROGRESS_FILE"
+elif [ -n "${CLAUDE_SESSION_ID:-}" ]; then
+  FILE="/tmp/claude-progress-${CLAUDE_SESSION_ID}.json"
+else
+  FILE="/tmp/claude-progress.json"
+fi
+
+cmd="${1:-}"
+shift || true
+
+case "$cmd" in
+  set)
+    label="${1:-}"
+    percent="${2:-}"
+    eta="${3:-}"
+    if [ -z "$label" ] || [ -z "$percent" ]; then
+      echo "usage: claude-progress set <label> <percent> [eta]" >&2
+      exit 2
+    fi
+    if ! [[ "$percent" =~ ^[0-9]+$ ]] || [ "$percent" -lt 0 ] || [ "$percent" -gt 100 ]; then
+      echo "percent must be an integer 0-100" >&2
+      exit 2
+    fi
+    jq -nc --arg label "$label" --argjson percent "$percent" --arg eta "$eta" \
+      '{label: $label, percent: $percent} + (if $eta != "" then {eta: $eta} else {} end)' \
+      > "$FILE"
+    ;;
+  label)
+    label="${1:-}"
+    if [ -z "$label" ]; then
+      echo "usage: claude-progress label <label>" >&2
+      exit 2
+    fi
+    jq -nc --arg label "$label" '{label: $label}' > "$FILE"
+    ;;
+  bump)
+    delta="${1:-}"
+    if ! [[ "$delta" =~ ^-?[0-9]+$ ]]; then
+      echo "usage: claude-progress bump <delta>  (integer, may be negative)" >&2
+      exit 2
+    fi
+    if [ ! -f "$FILE" ]; then
+      echo "no current progress file at $FILE" >&2
+      exit 1
+    fi
+    current=$(jq -r '.percent // 0' "$FILE")
+    new=$((current + delta))
+    [ "$new" -lt 0 ] && new=0
+    [ "$new" -gt 100 ] && new=100
+    tmp=$(mktemp)
+    jq --argjson new "$new" '.percent = $new' "$FILE" > "$tmp" && mv "$tmp" "$FILE"
+    ;;
+  clear)
+    rm -f "$FILE"
+    ;;
+  show)
+    if [ -f "$FILE" ]; then
+      cat "$FILE"
+    else
+      echo "(no progress file at $FILE)" >&2
+      exit 1
+    fi
+    ;;
+  ""|-h|--help|help)
+    sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'
+    ;;
+  *)
+    echo "unknown command: $cmd" >&2
+    echo "try: claude-progress help" >&2
+    exit 2
+    ;;
+esac
